@@ -14,12 +14,13 @@ const Home: React.FC = () => {
         </button>
       </div>
       <div>
-        <button onClick={() => navigate('/travailleur')}>
+        <button onClick={() => navigate('/travailleurhome')}>
           Espace Travailleur
         </button>
       </div>
+      
       <div>
-        <button onClick={() => navigate('/admin')}>
+        <button onClick={() => navigate('/adminhome')}>
           Administration
         </button>
       </div>
