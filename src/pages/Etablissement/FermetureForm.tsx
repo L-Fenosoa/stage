@@ -1,15 +1,13 @@
-// src/pages/Etablissement/OuvertureForm.tsx
+// src/pages/Etablissement/FermetureForm.tsx
 import React, { useState } from 'react';
 
-const OuvertureForm: React.FC = () => {
+const FermetureForm: React.FC = () => {
   const [formData, setFormData] = useState({
-    nomEtablissement: '',
-    dateOuverture: '',
+    motif: '',
+    datePrevue: '',
   });
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
@@ -17,27 +15,27 @@ const OuvertureForm: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Données envoyées :', formData);
-    alert('Formulaire d’ouverture soumis !');
+    alert('Formulaire de fermeture soumis !');
   };
 
   const handleReset = () => {
     setFormData({
-      nomEtablissement: '',
-      dateOuverture: '',
+      motif: '',
+      datePrevue: '',
     });
   };
 
   return (
     <div>
-      <h3>Formulaire d’ouverture</h3>
+      <h3>Formulaire de Fermeture</h3>
       <form onSubmit={handleSubmit}>
         <div>
           <label>
-            Nom de l’établissement :
+            Motif de la fermeture :
             <input
               type="text"
-              name="nomEtablissement"
-              value={formData.nomEtablissement}
+              name="motif"
+              value={formData.motif}
               onChange={handleChange}
             />
           </label>
@@ -45,11 +43,11 @@ const OuvertureForm: React.FC = () => {
 
         <div>
           <label>
-            Date d’ouverture :
+            Date prévue :
             <input
               type="date"
-              name="dateOuverture"
-              value={formData.dateOuverture}
+              name="datePrevue"
+              value={formData.datePrevue}
               onChange={handleChange}
             />
           </label>
@@ -64,4 +62,4 @@ const OuvertureForm: React.FC = () => {
   );
 };
 
-export default OuvertureForm;
+export default FermetureForm;

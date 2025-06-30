@@ -1,15 +1,27 @@
 // src/pages/Etablissement/Identification.tsx
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const Identification: React.FC = () => {
   const navigate = useNavigate();
+  const { context } = useParams(); // 'reouverture', 'fermeture', etc.
   const [identifiant, setIdentifiant] = useState('');
   const [motDePasse, setMotDePasse] = useState('');
 
+  const handleSubmit = () => {
+    // TODO : vérification réelle
+    if (context === 'reouverture') {
+      navigate('/etablissement/reouvertureform');
+    } else if (context === 'fermeture') {
+      navigate('/etablissement/fermetureform');
+    } else {
+      navigate('/etablissement/dashboard');
+    }
+  };
+
   return (
     <div>
-      <h3>Identification Établissement</h3>
+      <h3>Identification {context ? `(${context})` : ''}</h3>
       <div>
         <label>
           Identifiant:
@@ -31,17 +43,8 @@ const Identification: React.FC = () => {
         </label>
       </div>
       <div>
-        <button
-          onClick={() => {
-            // TODO : ajouter ici une vraie vérification/authentification
-            navigate('/etablissement/dashboard');
-          }}
-        >
-          Suivant
-        </button>
-        <button onClick={() => navigate(-1)}>
-          Retour
-        </button>
+        <button onClick={() => navigate(-1)}>Retour</button>
+        <button onClick={handleSubmit}>Suivant</button>
       </div>
     </div>
   );

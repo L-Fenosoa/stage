@@ -1,43 +1,44 @@
-// src/pages/Etablissement/OuvertureForm.tsx
 import React, { useState } from 'react';
 
-const OuvertureForm: React.FC = () => {
+const OffreEmploiForm: React.FC = () => {
   const [formData, setFormData] = useState({
-    nomEtablissement: '',
-    dateOuverture: '',
+    titre: '',
+    description: '',
   });
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    // TODO: ici, tu pourrais envoyer formData à une API
     console.log('Données envoyées :', formData);
-    alert('Formulaire d’ouverture soumis !');
+
+    // pour l'instant, on affiche juste un message
+    alert('Formulaire soumis !');
   };
 
   const handleReset = () => {
     setFormData({
-      nomEtablissement: '',
-      dateOuverture: '',
+      titre: '',
+      description: '',
     });
   };
 
   return (
     <div>
-      <h3>Formulaire d’ouverture</h3>
+      <h3>Formulaire Offre d’emploi</h3>
       <form onSubmit={handleSubmit}>
         <div>
           <label>
-            Nom de l’établissement :
+            Titre de l’offre :
             <input
               type="text"
-              name="nomEtablissement"
-              value={formData.nomEtablissement}
+              name="titre"
+              value={formData.titre}
               onChange={handleChange}
             />
           </label>
@@ -45,11 +46,10 @@ const OuvertureForm: React.FC = () => {
 
         <div>
           <label>
-            Date d’ouverture :
-            <input
-              type="date"
-              name="dateOuverture"
-              value={formData.dateOuverture}
+            Description :
+            <textarea
+              name="description"
+              value={formData.description}
               onChange={handleChange}
             />
           </label>
@@ -64,4 +64,4 @@ const OuvertureForm: React.FC = () => {
   );
 };
 
-export default OuvertureForm;
+export default OffreEmploiForm;
