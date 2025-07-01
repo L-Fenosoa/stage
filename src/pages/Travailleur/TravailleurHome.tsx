@@ -1,25 +1,86 @@
-// src/pages/Travailleur/TravailleurHome.tsx
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './TravailleurHome.module.css';
 
 const TravailleurHome: React.FC = () => {
   const navigate = useNavigate();
 
+  const [showModal, setShowModal] = useState(false);
+  const [identifiant, setIdentifiant] = useState('');
+  const [motDePasse, setMotDePasse] = useState('');
+
+  const handleIdentification = () => {
+    if (identifiant && motDePasse) {
+      // Navigation vers dashboard travailleur après identification
+      navigate('/travailleur/dashboardtrav');
+    } else {
+      alert('Veuillez remplir les champs requis.');
+    }
+  };
+
   return (
     <div className={styles.container}>
-      <button className={styles.back} onClick={() => navigate(-1)}>Retour</button>
+      <button className={styles.back} onClick={() => navigate('/')}>
+        Retour
+      </button>
       <header className={styles.hero}>
         <h2 className={styles.title}>Espace Travailleur</h2>
+        <p className={styles.description}>
+          Accédez facilement à vos services personnels. Identifiez-vous pour gérer vos démarches ou inscrivez-vous si vous êtes nouveau.
+        </p>
       </header>
       <div className={styles.buttons}>
-        <button className={styles.button} onClick={() => navigate('/travailleur/identificationtrav')}>
-          Identification
-        </button>
-        <button className={styles.button} onClick={() => navigate('/travailleur/inscriptiontrav')}>
-          Inscription
-        </button>
+        <div className={styles.card}>
+          <button
+            className={styles.buttonIdentification}
+            onClick={() => setShowModal(true)}
+          >
+            Identification
+          </button>
+          <p className={styles.btnDesc}>
+            Connectez-vous rapidement et en toute sécurité à votre compte.
+          </p>
+        </div>
+        <div className={styles.card}>
+          <button
+            className={styles.buttonInscription}
+            onClick={() => navigate('/travailleur/inscriptiontrav')}
+          >
+            Inscription
+          </button>
+          <p className={styles.btnDesc}>
+            Créez un nouveau compte pour accéder à tous les services.
+          </p>
+        </div>
       </div>
+
+      {showModal && (
+        <div className={styles.modalOverlay}>
+          <div className={styles.modal}>
+            <h3>Identification</h3>
+            <label>
+              Identifiant :
+              <input
+                type="text"
+                value={identifiant}
+                onChange={(e) => setIdentifiant(e.target.value)}
+              />
+            </label>
+            <label>
+              Mot de passe :
+              <input
+                type="password"
+                value={motDePasse}
+                onChange={(e) => setMotDePasse(e.target.value)}
+              />
+            </label>
+            <div className={styles.modalActions}>
+              <button onClick={handleIdentification}>Valider</button>
+              <button onClick={() => setShowModal(false)}>Annuler</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

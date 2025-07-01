@@ -91,19 +91,27 @@ const InscriptionTrav: React.FC = () => {
       <form onSubmit={handleSubmit} className={styles.form}>
         {Object.keys(formData).map((key) => (
           <div key={key} className={styles.formGroup}>
-            <label>
+            <label htmlFor={key}>
               {key.replace(/([A-Z])/g, ' $1').replace(/^./, s => s.toUpperCase())} :
-              {key === 'diplomes' || key === 'formations' || key === 'languesEtrangeres' || key === 'experiencePro' ? (
-                <textarea name={key} value={formData[key as keyof InscriptionTravData]} onChange={handleChange} />
-              ) : (
-                <input
-                  type={key.includes('date') ? 'date' : key === 'telephone' ? 'tel' : 'text'}
-                  name={key}
-                  value={formData[key as keyof InscriptionTravData]}
-                  onChange={handleChange}
-                />
-              )}
             </label>
+            {['diplomes', 'formations', 'languesEtrangeres', 'experiencePro'].includes(key) ? (
+              <textarea
+                id={key}
+                name={key}
+                value={formData[key as keyof InscriptionTravData]}
+                onChange={handleChange}
+                rows={4}
+              />
+            ) : (
+              <input
+                id={key}
+                type={key.includes('date') ? 'date' : key === 'telephone' ? 'tel' : 'text'}
+                name={key}
+                value={formData[key as keyof InscriptionTravData]}
+                onChange={handleChange}
+                autoComplete="off"
+              />
+            )}
           </div>
         ))}
         <div className={styles.buttonGroup}>

@@ -1,77 +1,119 @@
+/* src/pages/Travailleur/InscriptionTrav.module.css */
+
 .container {
   padding: 2rem;
-  background-color: #fff7f7;
+  background-color: #f0f7f1; /* vert très clair */
   min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .backButton {
   background: #fff;
-  border: 2px solid #ffcaca;
+  border: 2px solid #cc0000; /* rouge du drapeau */
   padding: 0.5rem 1rem;
   border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.3s, color 0.3s;
   margin-bottom: 1rem;
+  color: #cc0000;
+  font-weight: 600;
 }
 
 .backButton:hover {
-  background-color: #ffcaca;
+  background-color: #cc0000;
   color: white;
 }
 
 .title {
-  color: #cc4b4b;
+  color: #007a29; /* vert foncé */
   text-align: center;
   margin-bottom: 1.5rem;
+  font-weight: 700;
+  font-size: 2rem;
 }
 
 .form {
   max-width: 800px;
   margin: 0 auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 12px rgba(0,0,0,0.1);
 }
 
 .formGroup {
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
 }
 
 label {
-  display: block;
-  font-weight: 500;
+  font-weight: 600;
   color: #333;
+  margin-bottom: 0.4rem;
+  user-select: none;
 }
 
 input,
 textarea {
-  width: 100%;
-  padding: 0.5rem;
-  margin-top: 0.3rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  padding: 0.6rem;
+  border: 2px solid #007a29;
+  border-radius: 6px;
   font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.3s;
   resize: vertical;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #007a29;
+  outline: none;
 }
 
 .buttonGroup {
   display: flex;
   justify-content: space-between;
   margin-top: 2rem;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .submitButton,
 .resetButton {
-  padding: 0.6rem 1.2rem;
+  flex: 1 1 45%;
+  padding: 0.75rem 1.5rem;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 700;
   color: white;
+  transition: background-color 0.3s;
 }
 
 .submitButton {
-  background-color: #f28c8c;
+  background-color: #cc0000;
+}
+
+.submitButton:hover {
+  background-color: #a30000;
 }
 
 .resetButton {
-  background-color: #ccc;
-  color: #222;
+  background-color: #555;
+}
+
+.resetButton:hover {
+  background-color: #333;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .buttonGroup {
+    flex-direction: column;
+  }
+  .submitButton,
+  .resetButton {
+    flex: 1 1 100%;
+  }
 }
