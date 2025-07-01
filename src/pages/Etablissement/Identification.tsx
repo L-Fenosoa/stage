@@ -1,6 +1,7 @@
 // src/pages/Etablissement/Identification.tsx
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import styles from './Identification.module.css';
 
 const Identification: React.FC = () => {
   const navigate = useNavigate();
@@ -20,31 +21,39 @@ const Identification: React.FC = () => {
   };
 
   return (
-    <div>
-      <button onClick={() => navigate(-1)}>Retour</button>
-      <h3>Identification {context ? `(${context})` : ''}</h3>
-      <div>
-        <label>
-          Identifiant:
+    <div className={styles.container}>
+      <button className={styles.back} onClick={() => navigate(-1)}>
+        ← Retour
+      </button>
+
+      <div className={styles.formWrapper}>
+        <h3 className={styles.title}>
+          Identification {context ? `(${context})` : ''}
+        </h3>
+
+        <label className={styles.label}>
+          Identifiant
           <input
+            className={styles.input}
             type="text"
             value={identifiant}
             onChange={e => setIdentifiant(e.target.value)}
           />
         </label>
-      </div>
-      <div>
-        <label>
-          Mot de passe:
+
+        <label className={styles.label}>
+          Mot de passe
           <input
+            className={styles.input}
             type="password"
             value={motDePasse}
             onChange={e => setMotDePasse(e.target.value)}
           />
         </label>
-      </div>
-      <div>
-        <button onClick={handleSubmit}>Suivant</button>
+
+        <button className={styles.submit} onClick={handleSubmit}>
+          Suivant
+        </button>
       </div>
     </div>
   );

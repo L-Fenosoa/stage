@@ -1,16 +1,15 @@
 // src/pages/Etablissement/FermetureForm.tsx
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import styles from './FermetureForm.module.css';
 
 interface FermetureData {
-  // champs préremplis
   nomEtablissement: string;
   nis: string;
   nif: string;
   cnaps: string;
   telephone: string;
   adresse: string;
-  // champ éditable
   nombreLicencies: string;
 }
 
@@ -26,10 +25,8 @@ const FermetureForm: React.FC = () => {
     nombreLicencies: '',
   });
 
-  // Simule le chargement des données de l'établissement déjà identifié
   useEffect(() => {
-    // TODO : remplacer par un fetch réel à ton API
-    const etablissement = {
+    const etab = {
       nomEtablissement: 'Ma Société SARL',
       nis: '123456789',
       nif: '987654321',
@@ -39,7 +36,7 @@ const FermetureForm: React.FC = () => {
     };
     setFormData(prev => ({
       ...prev,
-      ...etablissement,
+      ...etab,
     }));
   }, []);
 
@@ -62,82 +59,31 @@ const FermetureForm: React.FC = () => {
   };
 
   return (
-    <div>
-      <button onClick={() => navigate(-1)}>Retour</button>
-      <h3>Déclaration de Fermeture</h3>
-      <form onSubmit={handleSubmit}>
-        {/* Champs préremplis en lecture seule */}
-        <div>
-          <label>
-            Nom ou raison sociale :
-            <input
-              type="text"
-              name="nomEtablissement"
-              value={formData.nomEtablissement}
-              readOnly
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            NIS :
-            <input
-              type="text"
-              name="nis"
-              value={formData.nis}
-              readOnly
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            NIF :
-            <input
-              type="text"
-              name="nif"
-              value={formData.nif}
-              readOnly
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Immat. CNAPS :
-            <input
-              type="text"
-              name="cnaps"
-              value={formData.cnaps}
-              readOnly
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Téléphone :
-            <input
-              type="tel"
-              name="telephone"
-              value={formData.telephone}
-              readOnly
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Adresse :
-            <input
-              type="text"
-              name="adresse"
-              value={formData.adresse}
-              readOnly
-            />
-          </label>
-        </div>
+    <div className={styles.container}>
+      <button className={styles.back} onClick={() => navigate(-1)}>Retour</button>
+      <div className={styles.header}>
+        <h3 className={styles.title}>Déclaration de Fermeture</h3>
+      </div>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <fieldset>
+          <legend>Établissement</legend>
+          {[
+            { label: 'Nom ou raison sociale', key: 'nomEtablissement' },
+            { label: 'NIS', key: 'nis' },
+            { label: 'NIF', key: 'nif' },
+            { label: 'Immat. CNAPS', key: 'cnaps' },
+            { label: 'Téléphone', key: 'telephone' },
+            { label: 'Adresse', key: 'adresse' }
+          ].map(({ label, key }) => (
+            <label key={key}>
+              {label} :
+              <input type="text" name={key} value={formData[key as keyof FermetureData]} readOnly />
+            </label>
+          ))}
+        </fieldset>
 
-        <hr />
-
-        {/* Champ spécifique éditable */}
-        <div>
+        <fieldset>
+          <legend>Fermeture</legend>
           <label>
             Nombre de travailleurs licenciés :
             <input
@@ -148,12 +94,11 @@ const FermetureForm: React.FC = () => {
               required
             />
           </label>
-        </div>
+        </fieldset>
 
-        {/* Boutons */}
-        <div>
-          <button type="submit">Soumettre</button>
-          <button type="button" onClick={handleReset}>Effacer tout</button>
+        <div className={styles.buttons}>
+          <button className={styles.submit} type="submit">Soumettre</button>
+          <button className={styles.reset} type="button" onClick={handleReset}>Effacer tout</button>
         </div>
       </form>
     </div>

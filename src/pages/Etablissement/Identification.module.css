@@ -1,0 +1,92 @@
+/* src/pages/Etablissement/Identification.module.css */
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  background: #f5f7fa;
+}
+
+.back {
+  align-self: flex-start;
+  margin-bottom: 1.5rem;
+  background: #fff;
+  border: 2px solid #00c6ff;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.3s;
+}
+
+.back:hover {
+  background: #00c6ff;
+  color: #fff;
+}
+
+.formWrapper {
+  width: 100%;
+  max-width: 400px; /* environ 1/3 d'un écran de 1200px */
+  background: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.label {
+  display: block;
+  margin-bottom: 1rem;
+  font-weight: 500;
+  color: #555;
+}
+
+.input {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  border: 2px solid #ddd;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #00c6ff;
+}
+
+.submit {
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 0.75rem;
+  background: #00c6ff;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.submit:hover {
+  background: #0072ff;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .formWrapper {
+    padding: 1.5rem;
+  }
+  .title {
+    font-size: 1.25rem;
+  }
+}

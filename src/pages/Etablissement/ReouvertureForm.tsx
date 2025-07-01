@@ -1,16 +1,15 @@
 // src/pages/Etablissement/ReouvertureForm.tsx
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import styles from './ReouvertureForm.module.css';
 
 interface ReouvertureData {
-  // ces champs sont affichés en lecture seule
   nomEtablissement: string;
   nis: string;
   nif: string;
   cnaps: string;
   telephone: string;
   adresse: string;
-  // ces champs sont éditables
   effectifAuMoment: string;
   nouvellesActivites: string;
 }
@@ -28,9 +27,7 @@ const ReouvertureForm: React.FC = () => {
     nouvellesActivites: '',
   });
 
-  // Simuler le chargement des données de l'établissement (après identification)
   useEffect(() => {
-    // TODO : ici, fetch('/api/etablissement')...
     const etab = {
       nomEtablissement: 'Ma Société SARL',
       nis: '123456',
@@ -67,82 +64,31 @@ const ReouvertureForm: React.FC = () => {
   };
 
   return (
-    <div>
-      <button type="button" onClick={() => navigate(-1)}>Retour</button>
-      <h3>Déclaration de Réouverture</h3>
-      <form onSubmit={handleSubmit}>
-        {/* Champs préremplis en lecture seule */}
-        <div>
-          <label>
-            Nom ou raison sociale :
-            <input
-              type="text"
-              name="nomEtablissement"
-              value={formData.nomEtablissement}
-              readOnly
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            NIS :
-            <input
-              type="text"
-              name="nis"
-              value={formData.nis}
-              readOnly
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            NIF :
-            <input
-              type="text"
-              name="nif"
-              value={formData.nif}
-              readOnly
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Immat. CNAPS :
-            <input
-              type="text"
-              name="cnaps"
-              value={formData.cnaps}
-              readOnly
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Téléphone :
-            <input
-              type="tel"
-              name="telephone"
-              value={formData.telephone}
-              readOnly
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Adresse :
-            <input
-              type="text"
-              name="adresse"
-              value={formData.adresse}
-              readOnly
-            />
-          </label>
-        </div>
+    <div className={styles.container}>
+      <button className={styles.back} onClick={() => navigate(-1)}>Retour</button>
+      <div className={styles.header}>
+        <h3 className={styles.title}>Déclaration de Réouverture</h3>
+      </div>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <fieldset>
+          <legend>Établissement</legend>
+          {[
+            { label: 'Nom ou raison sociale', key: 'nomEtablissement' },
+            { label: 'NIS', key: 'nis' },
+            { label: 'NIF', key: 'nif' },
+            { label: 'Immat. CNAPS', key: 'cnaps' },
+            { label: 'Téléphone', key: 'telephone' },
+            { label: 'Adresse', key: 'adresse' }
+          ].map(({ label, key }) => (
+            <label key={key}>
+              {label} :
+              <input type="text" name={key} value={formData[key as keyof ReouvertureData]} readOnly />
+            </label>
+          ))}
+        </fieldset>
 
-        <hr />
-
-        {/* Champs spécifiques éditables */}
-        <div>
+        <fieldset>
+          <legend>Informations de Réouverture</legend>
           <label>
             Effectif au moment de la réouverture :
             <input
@@ -152,8 +98,6 @@ const ReouvertureForm: React.FC = () => {
               onChange={handleChange}
             />
           </label>
-        </div>
-        <div>
           <label>
             Nouvelles activités/produits :
             <textarea
@@ -162,12 +106,11 @@ const ReouvertureForm: React.FC = () => {
               onChange={handleChange}
             />
           </label>
-        </div>
+        </fieldset>
 
-        {/* Boutons */}
-        <div>
-          <button type="submit">Soumettre</button>
-          <button type="button" onClick={handleReset}>Effacer tout</button>
+        <div className={styles.buttons}>
+          <button className={styles.submit} type="submit">Soumettre</button>
+          <button className={styles.reset} type="button" onClick={handleReset}>Effacer tout</button>
         </div>
       </form>
     </div>

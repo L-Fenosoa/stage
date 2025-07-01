@@ -1,0 +1,80 @@
+/* src/pages/Etablissement/Dashboard.module.css */
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  background: #f9fafc;
+}
+
+.back {
+  align-self: flex-start;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  background: #fff;
+  border: 2px solid #6fa8dc; /* variation douce du bleu */
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+.back:hover {
+  background: #6fa8dc;
+  color: #fff;
+}
+
+.hero {
+  width: 100%;
+  text-align: center;
+  padding: 2.5rem 1rem;
+  background: linear-gradient(135deg, #3a7bd5 0%, #3f51b5 100%); /* bleus plus profonds que EtablissementHome */
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  color: #fff;
+  line-height: 1.3;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  width: 100%;
+  max-width: 600px;
+}
+
+.btn {
+  padding: 0.75rem;
+  font-size: 1rem;
+  background: #fff;
+  border: 2px solid #4e54c8; /* comme EtablissementHome */
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+.btn:hover {
+  background: #4e54c8;
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .actions {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding: 2rem 1rem;
+  }
+
+  .title {
+    font-size: 1.25rem;
+  }
+}

@@ -1,0 +1,124 @@
+/* src/pages/Etablissement/OffreEmploiForm.module.css */
+
+.container {
+  padding: 2rem;
+  background: #eaf3fb; /* bleu très clair */
+  min-height: 100vh;
+}
+
+.back {
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  background: #fff;
+  border: 2px solid #4a90e2;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.back:hover {
+  background: #4a90e2;
+  color: #fff;
+}
+
+.header {
+  background: linear-gradient(135deg, #4a90e2 0%, #296eb4 100%);
+  padding: 2rem 1rem;
+  border-radius: 1rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.title {
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.form {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  max-width: 800px;
+  margin: auto;
+}
+
+fieldset {
+  border: 2px solid #d1e3f3;
+  border-radius: 0.75rem;
+  padding: 1rem 1.5rem;
+  margin-bottom: 2rem;
+}
+
+legend {
+  font-weight: bold;
+  padding: 0 0.5rem;
+  color: #296eb4;
+}
+
+label {
+  display: block;
+  margin-bottom: 1rem;
+  color: #333;
+  font-weight: 500;
+}
+
+input {
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 0.25rem;
+  border: 2px solid #cbd9e9;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+input:focus {
+  outline: none;
+  border-color: #4a90e2;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.submit {
+  background: #296eb4;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.submit:hover {
+  background: #225e9c;
+}
+
+.reset {
+  background: #ccd6dd;
+  color: #333;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.reset:hover {
+  background: #b5c6d3;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .form {
+    padding: 1.5rem;
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

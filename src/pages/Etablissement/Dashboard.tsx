@@ -1,26 +1,42 @@
 // src/pages/Etablissement/Dashboard.tsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import styles from './Dashboard.module.css';
+
+const actions = [
+  { label: 'Offre d’emploi', to: '/etablissement/offreemploiform' },
+  { label: 'Renseignements périodiques', to: '/etablissement/renseignementsperiodiquesform' },
+  { label: 'Réouverture', to: '/etablissement/reouvertureform' },
+  { label: 'Fermeture', to: '/etablissement/fermetureform' },
+];
 
 const Dashboard: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div>
-      <button onClick={() => navigate(-1)}>Retour</button>
-      <h3>Espace Établissement (identifié)</h3>
-      <button onClick={() => navigate('/etablissement/offreemploiform')}>
-        Offre d’emploi
+    <div className={styles.container}>
+      <button className={styles.back} onClick={() => navigate(-1)}>
+        ← Retour
       </button>
-      <button onClick={() => navigate('/etablissement/renseignementsperiodiquesform')}>
-        Renseignements périodiques
-      </button>
-      <button onClick={() => navigate('/etablissement/reouvertureform')}>
-        Réouverture
-      </button>
-      <button onClick={() => navigate('/etablissement/fermetureform')}>
-        Fermeture
-      </button>
+
+      <header className={styles.hero}>
+        <h3 className={styles.title}>
+          Espace Établissement<br/>
+          (identifié)
+        </h3>
+      </header>
+
+      <div className={styles.actions}>
+        {actions.map((act, i) => (
+          <button
+            key={i}
+            className={styles.btn}
+            onClick={() => navigate(act.to)}
+          >
+            {act.label}
+          </button>
+        ))}
+      </div>
     </div>
   );
 };
