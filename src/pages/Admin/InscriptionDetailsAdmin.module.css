@@ -1,0 +1,100 @@
+/* src/pages/Admin/InscriptionDetailsAdmin.module.css */
+
+.container {
+  padding: 2rem;
+  background: #f3fcf3;
+  min-height: 100vh;
+}
+
+.back {
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  background: #fff;
+  border: 2px solid #4c7a5a;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  color: #2e5f3e;
+  font-weight: 600;
+  transition: background 0.3s, color 0.3s;
+}
+
+.back:hover {
+  background: #4c7a5a;
+  color: #fff;
+}
+
+.card {
+  max-width: 800px;
+  margin: auto;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+}
+
+.title {
+  text-align: center;
+  color: #3c7d53;
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.detailList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+}
+
+.detailList li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #d9e7da;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.validate,
+.invalidate {
+  padding: 0.6rem 1.4rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.validate {
+  background: #5cbf74;
+  color: white;
+}
+
+.validate:hover {
+  background: #2f6044;
+}
+
+.invalidate {
+  background: #f76c6c;
+  color: white;
+}
+
+.invalidate:hover {
+  background: #b93f3f;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .card {
+    padding: 1.5rem;
+  }
+
+  .title {
+    font-size: 1.4rem;
+  }
+
+  .buttonGroup {
+    flex-direction: column;
+  }
+}
