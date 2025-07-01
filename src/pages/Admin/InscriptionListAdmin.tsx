@@ -13,7 +13,7 @@ const InscriptionListAdmin: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <button className={styles.back} onClick={() => navigate(-1)}>
+      <button className={styles.back} onClick={() => navigate('/admin/admindashboard')}>
         ← Retour
       </button>
 
