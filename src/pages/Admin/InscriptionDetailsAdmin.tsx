@@ -10,8 +10,8 @@ const InscriptionDetailsAdmin: React.FC = () => {
     <div>
       <h4>Détails de l'inscription #{id}</h4>
       <p>(données de l’inscrit…)</p>
-      <button onClick={() => navigate('/admin/inscriptions')}>Valider</button>
-      <button onClick={() => navigate('/admin/inscriptions')}>Invalider</button>
+      <button onClick={() => navigate('/admin/inscriptionlistadmin')}>Valider</button>
+      <button onClick={() => navigate('/admin/inscriptionlistadmin')}>Invalider</button>
     </div>
   );
 };

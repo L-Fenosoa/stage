@@ -21,6 +21,7 @@ const Identification: React.FC = () => {
 
   return (
     <div>
+      <button onClick={() => navigate(-1)}>Retour</button>
       <h3>Identification {context ? `(${context})` : ''}</h3>
       <div>
         <label>
@@ -43,7 +44,6 @@ const Identification: React.FC = () => {
         </label>
       </div>
       <div>
-        <button onClick={() => navigate(-1)}>Retour</button>
         <button onClick={handleSubmit}>Suivant</button>
       </div>
     </div>

@@ -16,7 +16,7 @@ const InscriptionListAdmin: React.FC = () => {
         {MOCK_INSCRITS.map(u => (
           <li key={u.id}>
             {u.nom}{' '}
-            <button onClick={() => navigate(`/admin/inscriptions/${u.id}`)}>
+            <button onClick={() => navigate(`/admin/inscriptiondetailsadmin/${u.id}`)}>
               Détails
             </button>
           </li>

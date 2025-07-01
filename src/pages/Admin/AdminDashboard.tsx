@@ -6,17 +6,18 @@ const AdminDashboard: React.FC = () => {
   const navigate = useNavigate();
   return (
     <div>
+      <button onClick={() => navigate('/adminidentification')}>Retour</button>
       <h3>Administration – Tableau de bord</h3>
-      <button onClick={() => navigate('/admin/declarations')}>
+      <button onClick={() => navigate('/admin/declarationlist')}>
         Déclarations d’établissement
       </button>
-      <button onClick={() => navigate('/admin/renseignements')}>
+      <button onClick={() => navigate('/admin/renslist')}>
         Renseignements périodiques
       </button>
-      <button onClick={() => navigate('/admin/offres')}>
+      <button onClick={() => navigate('/admin/offrelistadmin')}>
         Offres d’emploi
       </button>
-      <button onClick={() => navigate('/admin/inscriptions')}>
+      <button onClick={() => navigate('/admin/inscriptionlistadmin')}>
         Inscriptions Travailleur
       </button>
       {/* <button onClick={() => navigate('/admin/rapport')}>Rapport</button> */}

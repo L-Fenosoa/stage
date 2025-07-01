@@ -7,6 +7,7 @@ const EtablissementHome: React.FC = () => {
 
   return (
     <div>
+      <button onClick={() => navigate(-1)}>Retour</button>
       <h2>Espace Établissement</h2>
       <button onClick={() => navigate('/etablissement/identification')}>
         Identification

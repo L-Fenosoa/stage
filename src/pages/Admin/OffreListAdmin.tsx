@@ -16,7 +16,7 @@ const OffreListAdmin: React.FC = () => {
         {MOCK_OFFRES.map(o => (
           <li key={o.id}>
             {o.titre}{' '}
-            <button onClick={() => navigate(`/admin/offres/${o.id}`)}>
+            <button onClick={() => navigate(`/admin/offredetailsadmin/${o.id}`)}>
               Détails
             </button>
           </li>

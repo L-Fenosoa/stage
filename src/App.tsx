@@ -63,20 +63,20 @@ const App: React.FC = () => (
       <Route path="travailleur/inscriptiontrav" element={<InscriptionTrav />} />
 
       {/* Espace Admin */}
-      <Route path="adminhome" element={<AdminIdentification />} />
-      <Route path="admin/dashboard" element={<AdminDashboard />} />
+      <Route path="adminidentification" element={<AdminIdentification />} />
+      <Route path="admin/admindashboard" element={<AdminDashboard />} />
 
-      <Route path="admin/declarations" element={<DeclarationList />} />
-      <Route path="admin/declarations/:id" element={<DeclarationDetails />} />
+      <Route path="admin/declarationlist" element={<DeclarationList />} />
+      <Route path="admin/declarationdetails/:id" element={<DeclarationDetails />} />
 
-      <Route path="admin/renseignements" element={<RensList />} />
-      <Route path="admin/renseignements/:id" element={<RensDetails />} />
+      <Route path="admin/renslist" element={<RensList />} />
+      <Route path="admin/rensdetails/:id" element={<RensDetails />} />
 
-      <Route path="admin/offres" element={<OffreListAdmin />} />
-      <Route path="admin/offres/:id" element={<OffreDetailsAdmin />} />
+      <Route path="admin/offrelistadmin" element={<OffreListAdmin />} />
+      <Route path="admin/offredetailsadmin/:id" element={<OffreDetailsAdmin />} />
 
-      <Route path="admin/inscriptions" element={<InscriptionListAdmin />} />
-      <Route path="admin/inscriptions/:id" element={<InscriptionDetailsAdmin />} />
+      <Route path="admin/inscriptionlistadmin" element={<InscriptionListAdmin />} />
+      <Route path="admin/inscriptiondetailsadmin/:id" element={<InscriptionDetailsAdmin />} />
 
       {/* 404 */}
       <Route path="*" element={<h2>Page non trouvée</h2>} />

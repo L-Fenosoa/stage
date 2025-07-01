@@ -10,8 +10,8 @@ const OffreDetailsAdmin: React.FC = () => {
     <div>
       <h4>Détails de l'offre #{id}</h4>
       <p>(description complète…)</p>
-      <button onClick={() => navigate('/admin/offres')}>Valider</button>
-      <button onClick={() => navigate('/admin/offres')}>Invalider</button>
+      <button onClick={() => navigate('/admin/offrelistadmin')}>Valider</button>
+      <button onClick={() => navigate('/admin/offrelistadmin')}>Invalider</button>
     </div>
   );
 };

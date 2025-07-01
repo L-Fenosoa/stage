@@ -14,6 +14,7 @@ const IdentificationTrav: React.FC = () => {
 
   return (
     <div>
+      <button onClick={() => navigate(-1)}>Retour</button>
       <h3>Identification Travailleur</h3>
       <div>
         <label>
@@ -36,8 +37,7 @@ const IdentificationTrav: React.FC = () => {
         </label>
       </div>
       <div>
-        <button onClick={() => navigate(-1)}>Retour</button>
-        <button onClick={handleSubmit}>Suivant</button>
+          <button onClick={handleSubmit}>Suivant</button>
       </div>
     </div>
   );

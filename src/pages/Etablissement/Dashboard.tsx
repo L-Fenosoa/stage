@@ -7,6 +7,7 @@ const Dashboard: React.FC = () => {
 
   return (
     <div>
+      <button onClick={() => navigate(-1)}>Retour</button>
       <h3>Espace Établissement (identifié)</h3>
       <button onClick={() => navigate('/etablissement/offreemploiform')}>
         Offre d’emploi

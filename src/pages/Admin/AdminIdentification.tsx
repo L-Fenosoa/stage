@@ -9,11 +9,12 @@ const AdminIdentification: React.FC = () => {
 
   const handleSubmit = () => {
     // TODO : authentification réelle
-    navigate('/admin/dashboard');
+    navigate('/admin/admindashboard');
   };
 
   return (
     <div>
+      <button onClick={() => navigate('/')}>Retour</button>
       <h3>Administration – Identification</h3>
       <div>
         <label>
@@ -28,7 +29,6 @@ const AdminIdentification: React.FC = () => {
         </label>
       </div>
       <div>
-        <button onClick={() => navigate(-1)}>Retour</button>
         <button onClick={handleSubmit}>Suivant</button>
       </div>
     </div>
