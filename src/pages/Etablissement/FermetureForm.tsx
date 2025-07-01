@@ -1,6 +1,5 @@
 // src/pages/Etablissement/FermetureForm.tsx
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import styles from './FermetureForm.module.css';
 
 interface FermetureData {
@@ -14,7 +13,6 @@ interface FermetureData {
 }
 
 const FermetureForm: React.FC = () => {
-  const navigate = useNavigate();
   const [formData, setFormData] = useState<FermetureData>({
     nomEtablissement: '',
     nis: '',
@@ -60,7 +58,6 @@ const FermetureForm: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <button className={styles.back} onClick={() => navigate(-1)}>Retour</button>
       <div className={styles.header}>
         <h3 className={styles.title}>Déclaration de Fermeture</h3>
       </div>

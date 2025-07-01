@@ -36,6 +36,8 @@ import OffreDetailsAdmin from './pages/Admin/OffreDetailsAdmin';
 import InscriptionListAdmin from './pages/Admin/InscriptionListAdmin';
 import InscriptionDetailsAdmin from './pages/Admin/InscriptionDetailsAdmin';
 
+// Outlet pour le dashboard établissement
+
 const App: React.FC = () => (
   <BrowserRouter>
     <Routes>
@@ -47,11 +49,14 @@ const App: React.FC = () => (
       <Route path="etablissement/identification" element={<Identification />} />
       <Route path="etablissement/identification/:context" element={<Identification />} />
       <Route path="etablissement/ouvertureform" element={<OuvertureForm />} />
-      <Route path="etablissement/dashboard" element={<Dashboard />} />
-      <Route path="etablissement/offreemploiform" element={<OffreEmploiForm />} />
-      <Route path="etablissement/renseignementsperiodiquesform" element={<RenseignementsPeriodiquesForm />} />
-      <Route path="etablissement/reouvertureform" element={<ReouvertureForm />} />
-      <Route path="etablissement/fermetureform" element={<FermetureForm />} />
+
+      <Route path="etablissement/dashboard" element={<Dashboard />}>
+        <Route index element={<p style={{ color: 'gray' }}>Bienvenue sur le tableau de bord de votre établissement.</p>} />
+        <Route path="offreemploiform" element={<OffreEmploiForm />} />
+        <Route path="renseignementsperiodiquesform" element={<RenseignementsPeriodiquesForm />} />
+        <Route path="reouvertureform" element={<ReouvertureForm />} />
+        <Route path="fermetureform" element={<FermetureForm />} />
+      </Route>
 
       {/* Espace Travailleur */}
       <Route path="travailleurhome" element={<TravailleurHome />} />
@@ -65,16 +70,12 @@ const App: React.FC = () => (
       {/* Espace Admin */}
       <Route path="adminidentification" element={<AdminIdentification />} />
       <Route path="admin/admindashboard" element={<AdminDashboard />} />
-
       <Route path="admin/declarationlist" element={<DeclarationList />} />
       <Route path="admin/declarationdetails/:id" element={<DeclarationDetails />} />
-
       <Route path="admin/renslist" element={<RensList />} />
       <Route path="admin/rensdetails/:id" element={<RensDetails />} />
-
       <Route path="admin/offrelistadmin" element={<OffreListAdmin />} />
       <Route path="admin/offredetailsadmin/:id" element={<OffreDetailsAdmin />} />
-
       <Route path="admin/inscriptionlistadmin" element={<InscriptionListAdmin />} />
       <Route path="admin/inscriptiondetailsadmin/:id" element={<InscriptionDetailsAdmin />} />
 

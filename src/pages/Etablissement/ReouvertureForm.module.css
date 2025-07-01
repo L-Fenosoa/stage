@@ -1,26 +1,27 @@
 .container {
   padding: 2rem;
-  background: #f0f6ff;
+  background: #ffffff;       /* blanc */
   min-height: 100vh;
 }
 
 .back {
   margin-bottom: 1rem;
   padding: 0.5rem 1rem;
-  background: #fff;
-  border: 2px solid #5b9bff;
+  background: #ffffff;
+  border: 2px solid #e53935; /* rouge vif */
   border-radius: 0.5rem;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.3s, color 0.3s;
+  color: #e53935;
 }
 
 .back:hover {
-  background: #5b9bff;
-  color: #fff;
+  background: #e53935;
+  color: #ffffff;
 }
 
 .header {
-  background: linear-gradient(135deg, #5b9bff 0%, #2e77d0 100%);
+  background: linear-gradient(135deg, #e53935 0%, #388e3c 100%);
   padding: 2rem 1rem;
   border-radius: 1rem;
   text-align: center;
@@ -28,12 +29,12 @@
 }
 
 .title {
-  color: #fff;
+  color: #ffffff;
   font-size: 1.5rem;
 }
 
 .form {
-  background: #fff;
+  background: #ffffff;
   padding: 2rem;
   border-radius: 1rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -42,7 +43,7 @@
 }
 
 fieldset {
-  border: 2px solid #e0e0e0;
+  border: 2px solid #ddd;
   border-radius: 0.75rem;
   padding: 1rem 1.5rem;
   margin-bottom: 2rem;
@@ -51,7 +52,7 @@ fieldset {
 legend {
   font-weight: bold;
   padding: 0 0.5rem;
-  color: #2e77d0;
+  color: #388e3c;
 }
 
 label {
@@ -61,7 +62,7 @@ label {
   font-weight: 500;
 }
 
-input, textarea {
+input {
   width: 100%;
   padding: 0.6rem;
   margin-top: 0.25rem;
@@ -70,9 +71,9 @@ input, textarea {
   font-size: 1rem;
 }
 
-input:focus, textarea:focus {
+input:focus {
   outline: none;
-  border-color: #2e77d0;
+  border-color: #388e3c;
 }
 
 .buttons {
@@ -82,8 +83,8 @@ input:focus, textarea:focus {
 }
 
 .submit {
-  background: #2e77d0;
-  color: #fff;
+  background: #388e3c;
+  color: #ffffff;
   border: none;
   padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;
@@ -92,21 +93,22 @@ input:focus, textarea:focus {
 }
 
 .submit:hover {
-  background: #1a5bbf;
+  background: #2e7030;
 }
 
 .reset {
-  background: #ddd;
-  color: #333;
-  border: none;
+  background: #ffffff;
+  color: #e53935;
+  border: 2px solid #e53935;
   padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.3s, color 0.3s;
 }
 
 .reset:hover {
-  background: #bbb;
+  background: #e53935;
+  color: #ffffff;
 }
 
 @media (max-width: 600px) {

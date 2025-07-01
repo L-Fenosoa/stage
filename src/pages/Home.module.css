@@ -1,17 +1,17 @@
-/* src/pages/Home.module.css */
 .homePage {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 2rem;
+  background: #ffffff;
 }
 
 .hero {
   width: 100%;
   text-align: center;
   padding: 4rem 1rem;
-  background: linear-gradient(135deg, #4e54c8 0%, #8f94fb 100%);
-  color: #fff;
+  background: linear-gradient(135deg, #e53935 0%, #388e3c 100%);
+  color: #ffffff;
   border-radius: 1rem;
   margin-bottom: 2rem;
 }
@@ -39,7 +39,7 @@
   flex-direction: column;
   align-items: center;
   padding: 1.5rem;
-  background: #fff;
+  background: #ffffff;
   border-radius: 0.75rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -52,15 +52,16 @@
   padding: 0.75rem 1.25rem;
   font-size: 1rem;
   background: transparent;
-  border: 2px solid;
+  border: 2px solid #388e3c;
   border-radius: 0.5rem;
+  color: #388e3c;
   cursor: pointer;
   transition: background 0.3s, color 0.3s;
 }
 
 .cardBtn:hover {
-  background: currentColor;
-  color: #fff;
+  background: #388e3c;
+  color: #ffffff;
 }
 
 .icon {

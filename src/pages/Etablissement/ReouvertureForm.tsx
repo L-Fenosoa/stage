@@ -1,6 +1,5 @@
 // src/pages/Etablissement/ReouvertureForm.tsx
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import styles from './ReouvertureForm.module.css';
 
 interface ReouvertureData {
@@ -15,7 +14,6 @@ interface ReouvertureData {
 }
 
 const ReouvertureForm: React.FC = () => {
-  const navigate = useNavigate();
   const [formData, setFormData] = useState<ReouvertureData>({
     nomEtablissement: '',
     nis: '',
@@ -65,7 +63,6 @@ const ReouvertureForm: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <button className={styles.back} onClick={() => navigate(-1)}>Retour</button>
       <div className={styles.header}>
         <h3 className={styles.title}>Déclaration de Réouverture</h3>
       </div>

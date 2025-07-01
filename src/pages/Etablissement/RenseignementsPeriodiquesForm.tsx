@@ -1,6 +1,5 @@
 // src/pages/Etablissement/RenseignementsPeriodiquesForm.tsx
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import styles from './RenseignementsPeriodiquesForm.module.css';
 
 interface RenseignementsData {
@@ -24,7 +23,6 @@ interface RenseignementsData {
 }
 
 const RenseignementsPeriodiquesForm: React.FC = () => {
-  const navigate = useNavigate();
   const [formData, setFormData] = useState<RenseignementsData>({
     entrepriseMereNom: '',
     entrepriseMereNIS: '',
@@ -80,9 +78,6 @@ const RenseignementsPeriodiquesForm: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <button className={styles.back} onClick={() => navigate(-1)}>
-        ← Retour
-      </button>
 
       <header className={styles.header}>
         <h3 className={styles.title}>Formulaire Renseignements Périodiques</h3>

@@ -1,6 +1,5 @@
 // src/pages/Etablissement/OffreEmploiForm.tsx
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import styles from './OffreEmploiForm.module.css';
 
 interface OffreEmploiData {
@@ -28,7 +27,6 @@ interface OffreEmploiData {
 }
 
 const OffreEmploiForm: React.FC = () => {
-  const navigate = useNavigate();
   const [formData, setFormData] = useState<OffreEmploiData>({
     denominationService: '',
     nis: '',
@@ -92,9 +90,6 @@ const OffreEmploiForm: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <button className={styles.back} onClick={() => navigate(-1)}>
-        ← Retour
-      </button>
 
       <header className={styles.header}>
         <h3 className={styles.title}>Formulaire Offre d’emploi</h3>

@@ -1,28 +1,27 @@
-/* src/pages/Etablissement/RenseignementsPeriodiquesForm.module.css */
-
 .container {
   padding: 2rem;
-  background: #e6f0fa;
+  background: #ffffff;
   min-height: 100vh;
 }
 
 .back {
   margin-bottom: 1rem;
   padding: 0.5rem 1rem;
-  background: #fff;
-  border: 2px solid #5b9bd5;
+  background: #ffffff;
+  border: 2px solid #e53935;
   border-radius: 0.5rem;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.3s, color 0.3s;
+  color: #e53935;
 }
 
 .back:hover {
-  background: #5b9bd5;
-  color: #fff;
+  background: #e53935;
+  color: #ffffff;
 }
 
 .header {
-  background: linear-gradient(135deg, #5b9bd5 0%, #3b73aa 100%);
+  background: linear-gradient(135deg, #e53935 0%, #388e3c 100%);
   padding: 2rem 1rem;
   border-radius: 1rem;
   text-align: center;
@@ -30,7 +29,7 @@
 }
 
 .title {
-  color: #fff;
+  color: #ffffff;
   font-size: 1.5rem;
 }
 
@@ -44,7 +43,7 @@
 }
 
 fieldset {
-  border: 2px solid #d2e4f6;
+  border: 2px solid #ddd;
   border-radius: 0.75rem;
   padding: 1rem 1.5rem;
   margin-bottom: 2rem;
@@ -53,13 +52,13 @@ fieldset {
 legend {
   font-weight: bold;
   padding: 0 0.5rem;
-  color: #3b73aa;
+  color: #388e3c;
 }
 
 label {
   display: block;
   margin-bottom: 1rem;
-  color: #333;
+  color: #333333;
   font-weight: 500;
 }
 
@@ -67,14 +66,14 @@ input {
   width: 100%;
   padding: 0.6rem;
   margin-top: 0.25rem;
-  border: 2px solid #c1d8ee;
+  border: 2px solid #ddd;
   border-radius: 0.5rem;
   font-size: 1rem;
 }
 
 input:focus {
   outline: none;
-  border-color: #5b9bd5;
+  border-color: #388e3c;
 }
 
 .buttons {
@@ -84,8 +83,8 @@ input:focus {
 }
 
 .submit {
-  background: #3b73aa;
-  color: #fff;
+  background: #388e3c;
+  color: #ffffff;
   border: none;
   padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;
@@ -94,30 +93,20 @@ input:focus {
 }
 
 .submit:hover {
-  background: #2f5f8e;
+  background: #2e7030;
 }
 
 .reset {
-  background: #d8e6f2;
-  color: #333;
-  border: none;
+  background: #ffffff;
+  color: #e53935;
+  border: 2px solid #e53935;
   padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.3s, color 0.3s;
 }
 
 .reset:hover {
-  background: #bdd3e9;
-}
-
-@media (max-width: 600px) {
-  .form {
-    padding: 1.5rem;
-  }
-
-  .buttons {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
+  background: #e53935;
+  color: #ffffff;
 }
