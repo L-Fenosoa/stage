@@ -1,0 +1,91 @@
+.container {
+  padding: 2rem;
+  min-height: 100vh;
+  background: #fffafa;
+}
+
+.back {
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  background: #fff;
+  border: 2px solid #f5cccc;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+.back:hover {
+  background: #f5cccc;
+  color: #fff;
+}
+
+.card {
+  max-width: 600px;
+  margin: auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+}
+
+.title {
+  text-align: center;
+  font-size: 1.6rem;
+  color: #c96363;
+  margin-bottom: 1.5rem;
+}
+
+.infoList {
+  list-style: none;
+  padding-left: 0;
+  color: #333;
+}
+
+.infoList li {
+  margin-bottom: 1rem;
+}
+
+.edit {
+  margin-left: 1rem;
+  background: #f3a8a8;
+  border: none;
+  color: #fff;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.edit:hover {
+  background: #d98080;
+}
+
+.buttons {
+  text-align: right;
+  margin-top: 1rem;
+}
+
+.cancel {
+  background: #ddd;
+  color: #333;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.cancel:hover {
+  background: #bbb;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .card {
+    padding: 1.5rem;
+  }
+
+  .buttons {
+    text-align: center;
+  }
+}

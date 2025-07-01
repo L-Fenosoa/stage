@@ -1,6 +1,7 @@
 // src/pages/Travailleur/MiseAJourInfos.tsx
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import styles from './MiseAJourInfos.module.css';
 
 const INITIAL_INFOS = {
   nom: 'Dupont',
@@ -10,12 +11,10 @@ const INITIAL_INFOS = {
 
 const MiseAJourInfos: React.FC = () => {
   const [infos, setInfos] = useState(INITIAL_INFOS);
-  const [savedInfos, setSavedInfos] = useState(INITIAL_INFOS); // état de référence initial
+  const [savedInfos, setSavedInfos] = useState(INITIAL_INFOS);
   const navigate = useNavigate();
 
-  // Simuler une récupération depuis un backend si nécessaire
   useEffect(() => {
-    // Ici tu pourrais charger depuis une API réelle
     setInfos(INITIAL_INFOS);
     setSavedInfos(INITIAL_INFOS);
   }, []);
@@ -28,23 +27,25 @@ const MiseAJourInfos: React.FC = () => {
   };
 
   const handleCancel = () => {
-    setInfos(savedInfos); // réinitialise à l'état sauvegardé
+    setInfos(savedInfos);
   };
 
   return (
-    <div>
-      <h3>Mes informations</h3>
-      <ul>
-        {(['nom', 'prenom', 'email'] as (keyof typeof INITIAL_INFOS)[]).map(f => (
-          <li key={f}>
-            <strong>{f} :</strong> {infos[f]}{' '}
-            <button onClick={() => handleEdit(f)}>Modifier</button>
-          </li>
-        ))}
-      </ul>
-      <div>
-        <button onClick={() => navigate(-1)}>Retour</button>
-        <button onClick={handleCancel}>Annuler</button>
+    <div className={styles.container}>
+      <button className={styles.back} onClick={() => navigate(-1)}>Retour</button>
+      <div className={styles.card}>
+        <h3 className={styles.title}>Mes informations</h3>
+        <ul className={styles.infoList}>
+          {(['nom', 'prenom', 'email'] as (keyof typeof INITIAL_INFOS)[]).map(f => (
+            <li key={f}>
+              <strong>{f} :</strong> {infos[f]}{' '}
+              <button className={styles.edit} onClick={() => handleEdit(f)}>Modifier</button>
+            </li>
+          ))}
+        </ul>
+        <div className={styles.buttons}>
+          <button className={styles.cancel} onClick={handleCancel}>Annuler</button>
+        </div>
       </div>
     </div>
   );

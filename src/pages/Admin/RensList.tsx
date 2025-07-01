@@ -1,6 +1,7 @@
 // src/pages/Admin/RensList.tsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import styles from './RensList.module.css';
 
 interface RensItem {
   id: string;
@@ -17,21 +18,44 @@ const RensList: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div>
-      {/* Bouton Retour vers admin dashboard */}
-      <button onClick={() => navigate('/admin/admindashboard')}>Retour</button>
+    <div className={styles.container}>
+      <button className={styles.back} onClick={() => navigate('/admin/admindashboard')}>
+        Retour
+      </button>
 
-      <h4>Liste des renseignements périodiques</h4>
-      <ul>
-        {MOCK_RENS.map(r => (
-          <li key={r.id}>
-            {r.nomEtablissement} — {r.date.slice(0, 4)}{' '}
-            <button onClick={() => navigate(`/admin/rensdetails/${r.id}`)}>
-              Détails
-            </button>
-          </li>
-        ))}
-      </ul>
+      <div className={styles.card}>
+        <h4 className={styles.title}>Liste des renseignements périodiques</h4>
+
+        <div className={styles.tableContainer}>
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nom de l’établissement</th>
+                <th>Année</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {MOCK_RENS.map(r => (
+                <tr key={r.id}>
+                  <td>{r.id}</td>
+                  <td>{r.nomEtablissement}</td>
+                  <td>{r.date.slice(0, 4)}</td>
+                  <td>
+                    <button
+                      className={styles.detail}
+                      onClick={() => navigate(`/admin/rensdetails/${r.id}`)}
+                    >
+                      Détails
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 };

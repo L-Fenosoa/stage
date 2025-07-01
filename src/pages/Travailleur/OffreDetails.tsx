@@ -1,8 +1,8 @@
 // src/pages/Travailleur/OffreDetails.tsx
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import styles from './OffreDetails.module.css';
 
-// 1. Définition de l’interface décrivant une offre
 interface OffreDetailsData {
   id: string;
   denominationService: string;
@@ -28,7 +28,6 @@ interface OffreDetailsData {
   dateRecrutement: string;
 }
 
-// 2. Mock typé avec cette interface
 const MOCK_OFFRES_DETAILS: Record<string, OffreDetailsData> = {
   '1': {
     id: '1',
@@ -86,45 +85,41 @@ const OffreDetails: React.FC = () => {
   const data = id ? MOCK_OFFRES_DETAILS[id] : undefined;
 
   if (!data) {
-    return <p>Offre non trouvée.</p>;
+    return <p className={styles.message}>Offre non trouvée.</p>;
   }
 
   return (
-    <div>
-      {/* Bouton Retour avant le titre */}
-      <button onClick={() => navigate(-1)}>Retour</button>
-
-      <h3>Détails de l'offre #{data.id}</h3>
-      <ul>
-        <li><strong>Service employeur :</strong> {data.denominationService}</li>
-        <li><strong>NIS :</strong> {data.nis}</li>
-        <li><strong>NIF :</strong> {data.nif}</li>
-        <li><strong>Immat. CNAPS :</strong> {data.cnaps}</li>
-        <li><strong>Adresse :</strong> {data.adresseEtab}</li>
-        <li>
-          <strong>Recruteur :</strong> {data.recruteurNom} - 
-          {data.recruteurPoste} - {data.recruteurTelephone}
-        </li>
-
-        <li><strong>Intitulé du poste :</strong> {data.appellationPoste}</li>
-        <li><strong>Rémunération :</strong> {data.remuneration}</li>
-        <li><strong>Avantage en nature :</strong> {data.avantageNature}</li>
-        <li><strong>Durée d’emploi :</strong> {data.dureeEmploi}</li>
-        <li><strong>Lieu d’emploi :</strong> {data.lieuEmploi}</li>
-
-        <li><strong>Sexe :</strong> {data.sexe}</li>
-        <li><strong>Classe d’âge :</strong> {data.classeAge}</li>
-        <li><strong>Diplômes :</strong> {data.diplomes}</li>
-        <li><strong>Lieu de résidence :</strong> {data.lieuResidence}</li>
-        <li><strong>Autres conditions :</strong> {data.autresConditions}</li>
-
-        <li><strong>Nombre de candidats demandés :</strong> {data.nombreCandidats}</li>
-        <li><strong>Date de l’épreuve :</strong> {data.dateEpreuve}</li>
-        <li><strong>Date de recrutement :</strong> {data.dateRecrutement}</li>
-      </ul>
-
-      {/* Bouton Postuler */}
-      <button onClick={() => alert('Candidature envoyée !')}>Postuler</button>
+    <div className={styles.container}>
+      <button className={styles.back} onClick={() => navigate(-1)}>Retour</button>
+      <div className={styles.card}>
+        <h3 className={styles.title}>Détails de l'offre #{data.id}</h3>
+        <ul className={styles.detailsList}>
+          <li><strong>Service employeur :</strong> {data.denominationService}</li>
+          <li><strong>NIS :</strong> {data.nis}</li>
+          <li><strong>NIF :</strong> {data.nif}</li>
+          <li><strong>Immat. CNAPS :</strong> {data.cnaps}</li>
+          <li><strong>Adresse :</strong> {data.adresseEtab}</li>
+          <li>
+            <strong>Recruteur :</strong> {data.recruteurNom} - {data.recruteurPoste} - {data.recruteurTelephone}
+          </li>
+          <li><strong>Intitulé du poste :</strong> {data.appellationPoste}</li>
+          <li><strong>Rémunération :</strong> {data.remuneration}</li>
+          <li><strong>Avantage en nature :</strong> {data.avantageNature}</li>
+          <li><strong>Durée d’emploi :</strong> {data.dureeEmploi}</li>
+          <li><strong>Lieu d’emploi :</strong> {data.lieuEmploi}</li>
+          <li><strong>Sexe :</strong> {data.sexe}</li>
+          <li><strong>Classe d’âge :</strong> {data.classeAge}</li>
+          <li><strong>Diplômes :</strong> {data.diplomes}</li>
+          <li><strong>Lieu de résidence :</strong> {data.lieuResidence}</li>
+          <li><strong>Autres conditions :</strong> {data.autresConditions}</li>
+          <li><strong>Nombre de candidats :</strong> {data.nombreCandidats}</li>
+          <li><strong>Date de l’épreuve :</strong> {data.dateEpreuve}</li>
+          <li><strong>Date de recrutement :</strong> {data.dateRecrutement}</li>
+        </ul>
+        <div className={styles.buttons}>
+          <button className={styles.apply} onClick={() => alert('Candidature envoyée !')}>Postuler</button>
+        </div>
+      </div>
     </div>
   );
 };

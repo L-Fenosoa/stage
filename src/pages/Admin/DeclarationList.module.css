@@ -1,0 +1,103 @@
+/* src/pages/Admin/DeclarationList.module.css */
+
+.container {
+  padding: 2rem;
+  min-height: 100vh;
+  background: #f3fcf3;
+}
+
+.back {
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  background: #fff;
+  border: 2px solid #4c7a5a;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+  color: #2f4f3b;
+  font-weight: 600;
+}
+
+.back:hover {
+  background: #4c7a5a;
+  color: #fff;
+}
+
+.card {
+  max-width: 900px;
+  margin: auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.title {
+  text-align: center;
+  font-size: 1.6rem;
+  color: #3c7d53;
+  margin-bottom: 2rem;
+}
+
+.tableContainer {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #e9f7eb;
+}
+
+.table thead {
+  background-color: #cdebd6;
+  color: #2f4f3b;
+}
+
+.table th,
+.table td {
+  padding: 0.8rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #bce3c5;
+}
+
+.table tbody tr:hover {
+  background-color: #dff5e5;
+}
+
+.detail {
+  background: #5cbf74;
+  border: none;
+  color: #fff;
+  padding: 0.4rem 0.9rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-weight: 600;
+}
+
+.detail:hover {
+  background: #2f6044;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .card {
+    padding: 1.5rem;
+  }
+
+  .title {
+    font-size: 1.4rem;
+  }
+
+  .table th,
+  .table td {
+    padding: 0.6rem 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .detail {
+    font-size: 0.9rem;
+    padding: 0.3rem 0.7rem;
+  }
+}

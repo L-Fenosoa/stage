@@ -1,23 +1,20 @@
 // src/pages/Admin/DeclarationDetails.tsx
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import styles from './DeclarationDetails.module.css';
 
 interface DeclarationDetailsData {
   id: string;
   type: 'Ouverture' | 'Réouverture' | 'Fermeture';
-  // Champs communs
   nomEtablissement: string;
   nis: string;
   nif: string;
   cnaps: string;
   telephone: string;
   adresse: string;
-  // Spécifique Ouverture
   effectifInitial?: number;
-  // Spécifique Réouverture
   effectifAuMoment?: number;
   nouvellesActivites?: string;
-  // Spécifique Fermeture
   nombreLicencies?: number;
 }
 
@@ -64,43 +61,46 @@ const DeclarationDetails: React.FC = () => {
   const data = id ? MOCK_DECLARATIONS_DETAILS[id] : undefined;
 
   if (!data) {
-    return <p>Déclaration non trouvée.</p>;
+    return <p className={styles.error}>Déclaration non trouvée.</p>;
   }
 
   return (
-    <div>
-      {/* Bouton retour toujours vers la liste */}
-      <button onClick={() => navigate('/admin/declarationlist')}>Retour</button>
+    <div className={styles.container}>
+      <button className={styles.back} onClick={() => navigate('/admin/declarationlist')}>
+        ← Retour
+      </button>
 
-      <h4>Détails de la déclaration #{data.id}</h4>
-      <ul>
-        <li><strong>Type :</strong> {data.type}</li>
-        <li><strong>Nom établissement :</strong> {data.nomEtablissement}</li>
-        <li><strong>NIS :</strong> {data.nis}</li>
-        <li><strong>NIF :</strong> {data.nif}</li>
-        <li><strong>Immat. CNAPS :</strong> {data.cnaps}</li>
-        <li><strong>Téléphone :</strong> {data.telephone}</li>
-        <li><strong>Adresse :</strong> {data.adresse}</li>
+      <div className={styles.card}>
+        <h4 className={styles.title}>Déclaration #{data.id}</h4>
+        <ul className={styles.infoList}>
+          <li><strong>Type :</strong> {data.type}</li>
+          <li><strong>Nom établissement :</strong> {data.nomEtablissement}</li>
+          <li><strong>NIS :</strong> {data.nis}</li>
+          <li><strong>NIF :</strong> {data.nif}</li>
+          <li><strong>Immat. CNAPS :</strong> {data.cnaps}</li>
+          <li><strong>Téléphone :</strong> {data.telephone}</li>
+          <li><strong>Adresse :</strong> {data.adresse}</li>
 
-        {data.type === 'Ouverture' && (
-          <li><strong>Effectif initial :</strong> {data.effectifInitial}</li>
-        )}
+          {data.type === 'Ouverture' && (
+            <li><strong>Effectif initial :</strong> {data.effectifInitial}</li>
+          )}
 
-        {data.type === 'Réouverture' && (
-          <>
-            <li><strong>Effectif à la réouverture :</strong> {data.effectifAuMoment}</li>
-            <li><strong>Nouvelles activités :</strong> {data.nouvellesActivites}</li>
-          </>
-        )}
+          {data.type === 'Réouverture' && (
+            <>
+              <li><strong>Effectif à la réouverture :</strong> {data.effectifAuMoment}</li>
+              <li><strong>Nouvelles activités :</strong> {data.nouvellesActivites}</li>
+            </>
+          )}
 
-        {data.type === 'Fermeture' && (
-          <li><strong>Nombre de licenciés :</strong> {data.nombreLicencies}</li>
-        )}
-      </ul>
+          {data.type === 'Fermeture' && (
+            <li><strong>Nombre de licenciés :</strong> {data.nombreLicencies}</li>
+          )}
+        </ul>
 
-      <div>
-        <button onClick={() => navigate('/admin/declarationlist')}>Valider</button>
-        <button onClick={() => navigate('/admin/declarationlist')}>Invalider</button>
+        <div className={styles.actions}>
+          <button className={styles.validate}>Valider</button>
+          <button className={styles.invalidate}>Invalider</button>
+        </div>
       </div>
     </div>
   );

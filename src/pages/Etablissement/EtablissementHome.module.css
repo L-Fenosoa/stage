@@ -73,3 +73,46 @@
     font-size: 1.5rem;
   }
 }
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.card {
+  background: #f4fbf4;
+  border: 1px solid #cbe9cb;
+  border-radius: 0.75rem;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.btn {
+  background: #3c7d53;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  margin-bottom: 0.8rem;
+}
+
+.btn:hover {
+  background: #2e5f3e;
+}
+
+.desc {
+  color: #385c3f;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}

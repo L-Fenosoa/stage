@@ -1,0 +1,71 @@
+.container {
+  padding: 2rem;
+  min-height: 100vh;
+  background: #fffafa;
+}
+
+.back {
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  background: #fff;
+  border: 2px solid #f5cccc;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+.back:hover {
+  background: #f5cccc;
+  color: #fff;
+}
+
+.card {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.title {
+  text-align: center;
+  color: #c96363;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.detailsList {
+  list-style: none;
+  padding-left: 0;
+  color: #333;
+}
+
+.detailsList li {
+  margin-bottom: 0.75rem;
+}
+
+.buttons {
+  text-align: right;
+  margin-top: 2rem;
+}
+
+.apply {
+  background: #f28c8c;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.apply:hover {
+  background: #d96f6f;
+}
+
+.message {
+  padding: 2rem;
+  text-align: center;
+  color: #a00;
+}

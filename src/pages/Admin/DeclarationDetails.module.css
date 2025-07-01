@@ -1,0 +1,94 @@
+/* src/pages/Admin/DeclarationDetails.module.css */
+
+.container {
+  padding: 2rem;
+  min-height: 100vh;
+  background: #f3fcf3;
+}
+
+.back {
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  background: #fff;
+  border: 2px solid #96d7a2;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  color: #2e5f3e;
+  font-weight: 600;
+  transition: background 0.3s, color 0.3s;
+}
+
+.back:hover {
+  background: #96d7a2;
+  color: #fff;
+}
+
+.card {
+  max-width: 600px;
+  margin: auto;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+}
+
+.title {
+  text-align: center;
+  color: #3c7d53;
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.infoList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+  color: #2e5f3e;
+}
+
+.infoList li {
+  margin-bottom: 0.8rem;
+  font-size: 1rem;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.validate,
+.invalidate {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.validate {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.validate:hover {
+  background-color: #3e8e41;
+}
+
+.invalidate {
+  background-color: #f44336;
+  color: #fff;
+}
+
+.invalidate:hover {
+  background-color: #d32f2f;
+}
+
+.error {
+  padding: 2rem;
+  text-align: center;
+  color: #b71c1c;
+  font-weight: bold;
+}

@@ -4,10 +4,16 @@ import { useNavigate } from 'react-router-dom';
 import styles from './EtablissementHome.module.css';
 
 const actions = [
-  { label: 'Identification', to: '/etablissement/identification' },
-  { label: 'Ouverture', to: '/etablissement/ouvertureform' },
-  { label: 'Réouverture', to: '/etablissement/reouvertureform' },
-  { label: 'Fermeture', to: '/etablissement/fermetureform' },
+  {
+    label: 'Identification',
+    to: '/etablissement/identification',
+    description: 'Commencez par identifier votre établissement pour accéder aux services.',
+  },
+  {
+    label: 'Ouverture',
+    to: '/etablissement/ouvertureform',
+    description: 'Soumettez un formulaire d’ouverture d’établissement rapidement.',
+  },
 ];
 
 const EtablissementHome: React.FC = () => {
@@ -28,13 +34,12 @@ const EtablissementHome: React.FC = () => {
 
       <div className={styles.actions}>
         {actions.map((act, i) => (
-          <button
-            key={i}
-            className={styles.btn}
-            onClick={() => navigate(act.to)}
-          >
-            {act.label}
-          </button>
+          <div key={i} className={styles.card}>
+            <button className={styles.btn} onClick={() => navigate(act.to)}>
+              {act.label}
+            </button>
+            <p className={styles.desc}>{act.description}</p>
+          </div>
         ))}
       </div>
     </div>

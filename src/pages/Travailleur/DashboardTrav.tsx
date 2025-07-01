@@ -1,6 +1,7 @@
 // src/pages/Travailleur/DashboardTrav.tsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import styles from './DashboardTrav.module.css';
 
 // Données fictives simulant le travailleur identifié
 const USER_DATA = {
@@ -27,44 +28,47 @@ const MOCK_OFFRES = [
 
 const DashboardTrav: React.FC = () => {
   const navigate = useNavigate();
-  
+
   return (
-    <div>
-      {/* Bouton Retour */}
-      <button onClick={() => navigate(-1)}>Retour</button>
+    <div className={styles.container}>
+      <button className={styles.back} onClick={() => navigate(-1)}>Retour</button>
 
-      <h3>Tableau de bord Travailleur</h3>
+      <div className={styles.card}>
+        <h3 className={styles.title}>Tableau de bord Travailleur</h3>
 
+        <section className={styles.section}>
+          <h4>Mes informations</h4>
+          <ul className={styles.infoList}>
+            <li><strong>Nom :</strong> {USER_DATA.nom}</li>
+            <li><strong>Prénom :</strong> {USER_DATA.prenom}</li>
+            <li><strong>Téléphone :</strong> {USER_DATA.telephone}</li>
+            <li><strong>1er choix d’emploi :</strong> {USER_DATA.premierChoixEmploi}</li>
+            <li><strong>2e choix d’emploi :</strong> {USER_DATA.deuxiemeChoixEmploi}</li>
+          </ul>
+          <button className={styles.action} onClick={() => navigate('/travailleur/miseajourinfos')}>
+            Mettre à jour mes informations
+          </button>
+        </section>
 
-      {/* Données du travailleur */}
-      <div style={{ margin: '1em 0' }}>
-        <h4>Mes informations</h4>
-        <ul>
-          <li><strong>Nom :</strong> {USER_DATA.nom}</li>
-          <li><strong>Prénom :</strong> {USER_DATA.prenom}</li>
-          <li><strong>Téléphone :</strong> {USER_DATA.telephone}</li>
-          <li><strong>1er choix d’emploi :</strong> {USER_DATA.premierChoixEmploi}</li>
-          <li><strong>2e choix d’emploi :</strong> {USER_DATA.deuxiemeChoixEmploi}</li>
-        </ul>
+        <section className={styles.section}>
+          <h4>Offres d’emploi disponibles</h4>
+          <ul className={styles.offres}>
+            {MOCK_OFFRES.map(offre => (
+              <li key={offre.id} className={styles.offreItem}>
+                <span>
+                  <strong>{offre.nomEtablissement}</strong> — {offre.poste}
+                </span>
+                <button
+                  className={styles.detail}
+                  onClick={() => navigate(`/travailleur/offredetails/${offre.id}`)}
+                >
+                  Voir détails
+                </button>
+              </li>
+            ))}
+          </ul>
+        </section>
       </div>
-
-      {/* Mettre à jour infos */}
-      <button onClick={() => navigate('/travailleur/miseajourinfos')}>
-        Mettre à jour mes informations
-      </button>
-
-      {/* Liste des offres */}
-      <h4>Offres d’emploi disponibles</h4>
-      <ul>
-        {MOCK_OFFRES.map(offre => (
-          <li key={offre.id}>
-            <strong>{offre.nomEtablissement}</strong> — {offre.poste}{' '}
-            <button onClick={() => navigate(`/travailleur/offredetails/${offre.id}`)}>
-              Voir détails
-            </button>
-          </li>
-        ))}
-      </ul>
     </div>
   );
 };

@@ -1,11 +1,10 @@
-/* eslint-disable no-irregular-whitespace */
 // src/pages/Admin/RensDetails.tsx
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import styles from './RensDetails.module.css';
 
 interface RensDetailsData {
   id: string;
-  // I – Renseignements généraux (exemple)
   entrepriseMereNom: string;
   entrepriseMereNIS: string;
   entrepriseMereFormeJuridique: string;
@@ -16,12 +15,10 @@ interface RensDetailsData {
   etabActivitePrincipale: string;
   etabActiviteSecondaire: string;
   etabDateEnvoiQuestionnaire: string;
-  // Charges sociales
   cotisationCNAPS: string;
   cotisationMedecineTravail: string;
   autresChargesSociales: string;
   totalChargesSociales: string;
-  // Accidents & élections
   nbAccidents: string;
   dateDernieresElections: string;
   dateEnvoiProcProcElect: string;
@@ -75,40 +72,40 @@ const RensDetails: React.FC = () => {
   const navigate = useNavigate();
   const data = id ? MOCK_RENS_DETAILS[id] : undefined;
 
-  if (!data) return <p>Renseignement non trouvé.</p>;
+  if (!data) return <p className={styles.error}>Renseignement non trouvé.</p>;
 
   return (
-    <div>
-      {/* Bouton Retour vers la liste des renseignements */}
-      <button onClick={() => navigate('/admin/renslist')}>Retour</button>
+    <div className={styles.container}>
+      <button className={styles.back} onClick={() => navigate('/admin/renslist')}>
+        ← Retour
+      </button>
 
-      <h4>Détails du renseignement périodique #{data.id}</h4>
-      <ul>
-        <li><strong>Entreprise mère :</strong> {data.entrepriseMereNom}</li>
-        <li><strong>NIS (mère) :</strong> {data.entrepriseMereNIS}</li>
-        <li><strong>Forme juridique :</strong> {data.entrepriseMereFormeJuridique}</li>
-        <li><strong>Établissement :</strong> {data.etabNom}</li>
-        <li><strong>NIS (étab.) :</strong> {data.etabNIS}</li>
-        <li><strong>CNAPS (étab.) :</strong> {data.etabCNAPS}</li>
-        <li><strong>Adresse :</strong> {data.etabAdresse}</li>
-        <li><strong>Activité principale :</strong> {data.etabActivitePrincipale}</li>
-        <li><strong>Activité secondaire :</strong> {data.etabActiviteSecondaire}</li>
-        <li><strong>Date envoi questionnaire :</strong> {data.etabDateEnvoiQuestionnaire}</li>
+      <div className={styles.card}>
+        <h4 className={styles.title}>Renseignement périodique #{data.id}</h4>
+        <ul className={styles.infoList}>
+          <li><strong>Entreprise mère :</strong> {data.entrepriseMereNom}</li>
+          <li><strong>NIS (mère) :</strong> {data.entrepriseMereNIS}</li>
+          <li><strong>Forme juridique :</strong> {data.entrepriseMereFormeJuridique}</li>
+          <li><strong>Établissement :</strong> {data.etabNom}</li>
+          <li><strong>NIS (étab.) :</strong> {data.etabNIS}</li>
+          <li><strong>CNAPS (étab.) :</strong> {data.etabCNAPS}</li>
+          <li><strong>Adresse :</strong> {data.etabAdresse}</li>
+          <li><strong>Activité principale :</strong> {data.etabActivitePrincipale}</li>
+          <li><strong>Activité secondaire :</strong> {data.etabActiviteSecondaire}</li>
+          <li><strong>Date envoi questionnaire :</strong> {data.etabDateEnvoiQuestionnaire}</li>
+          <li><strong>Cotisation CNAPS :</strong> {data.cotisationCNAPS}</li>
+          <li><strong>Cotisation médecine travail :</strong> {data.cotisationMedecineTravail}</li>
+          <li><strong>Autres charges sociales :</strong> {data.autresChargesSociales}</li>
+          <li><strong>Total charges sociales :</strong> {data.totalChargesSociales}</li>
+          <li><strong>Accidents du travail :</strong> {data.nbAccidents}</li>
+          <li><strong>Date dernières élections :</strong> {data.dateDernieresElections}</li>
+          <li><strong>Date envoi PV inspection :</strong> {data.dateEnvoiProcProcElect}</li>
+        </ul>
 
-        <li><strong>Cotisation CNAPS :</strong> {data.cotisationCNAPS}</li>
-        <li><strong>Cotisation médecine travail :</strong> {data.cotisationMedecineTravail}</li>
-        <li><strong>Autres charges sociales :</strong> {data.autresChargesSociales}</li>
-        <li><strong>Total charges sociales :</strong> {data.totalChargesSociales}</li>
-
-        <li><strong>Accidents du travail (année) :</strong> {data.nbAccidents}</li>
-        <li><strong>Date dernières élections :</strong> {data.dateDernieresElections}</li>
-        // eslint-disable-next-line no-irregular-whitespace
-        <li><strong>Date envoi PV inspection :</strong> {data.dateEnvoiProcProcElect}</li>
-      </ul>
-
-      <div>
-        <button onClick={() => navigate('/admin/renslist')}>Valider</button>
-        <button onClick={() => navigate('/admin/renslist')}>Invalider</button>
+        <div className={styles.actions}>
+          <button className={styles.validate}>Valider</button>
+          <button className={styles.invalidate}>Invalider</button>
+        </div>
       </div>
     </div>
   );

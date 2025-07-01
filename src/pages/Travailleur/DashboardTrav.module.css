@@ -1,0 +1,104 @@
+.container {
+  padding: 2rem;
+  min-height: 100vh;
+  background: #fff5f5;
+}
+
+.back {
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  background: #fff;
+  border: 2px solid #f9a3a3;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+.back:hover {
+  background: #f9a3a3;
+  color: #fff;
+}
+
+.card {
+  max-width: 800px;
+  margin: auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.title {
+  text-align: center;
+  font-size: 1.7rem;
+  color: #e26767;
+  margin-bottom: 2rem;
+}
+
+.section {
+  margin-bottom: 2rem;
+}
+
+.infoList {
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.action {
+  background: #e26767;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.action:hover {
+  background: #c94545;
+}
+
+.offres {
+  list-style: none;
+  padding: 0;
+}
+
+.offreItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff0f0;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #f3c0c0;
+  border-radius: 0.5rem;
+}
+
+.detail {
+  background: #f38888;
+  border: none;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.detail:hover {
+  background: #d75757;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .offreItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+}

@@ -1,6 +1,7 @@
 // src/pages/Admin/DeclarationList.tsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import styles from './DeclarationList.module.css';
 
 interface DeclarationItem {
   id: string;
@@ -18,21 +19,44 @@ const DeclarationList: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div>
-      {/* Bouton Retour */}
-      <button onClick={() => navigate(-1)}>Retour</button>
+    <div className={styles.container}>
+      <button className={styles.back} onClick={() => navigate('/admin/admindashboard')}>
+        Retour
+      </button>
 
-      <h4>Liste des déclarations</h4>
-      <ul>
-        {MOCK_DECLARATIONS.map(d => (
-          <li key={d.id}>
-            {d.type} – {d.nomEtablissement}{' '}
-            <button onClick={() => navigate(`/admin/declarationdetails/${d.id}`)}>
-              Détails
-            </button>
-          </li>
-        ))}
-      </ul>
+      <div className={styles.card}>
+        <h4 className={styles.title}>Liste des déclarations</h4>
+
+        <div className={styles.tableContainer}>
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Type</th>
+                <th>Nom de l’établissement</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {MOCK_DECLARATIONS.map(d => (
+                <tr key={d.id}>
+                  <td>{d.id}</td>
+                  <td>{d.type}</td>
+                  <td>{d.nomEtablissement}</td>
+                  <td>
+                    <button
+                      className={styles.detail}
+                      onClick={() => navigate(`/admin/declarationdetails/${d.id}`)}
+                    >
+                      Détails
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 };
