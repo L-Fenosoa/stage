@@ -1,7 +1,7 @@
-// src/pages/Admin/DeclarationList.tsx
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import styles from './DeclarationList.module.css';
+import Sidebar from '../../components/AdminSidebar';
 
 interface DeclarationItem {
   id: string;
@@ -17,44 +17,45 @@ const MOCK_DECLARATIONS: DeclarationItem[] = [
 
 const DeclarationList: React.FC = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   return (
-    <div className={styles.container}>
-      <button className={styles.back} onClick={() => navigate('/admin/admindashboard')}>
-        Retour
-      </button>
+    <div className={styles.layout}>
+      <Sidebar currentPath={location.pathname} />
+      <div className={styles.container}>
 
-      <div className={styles.card}>
-        <h4 className={styles.title}>Liste des déclarations</h4>
+        <div className={styles.card}>
+          <h4 className={styles.title}>Liste des déclarations</h4>
 
-        <div className={styles.tableContainer}>
-          <table className={styles.table}>
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Type</th>
-                <th>Nom de l’établissement</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {MOCK_DECLARATIONS.map(d => (
-                <tr key={d.id}>
-                  <td>{d.id}</td>
-                  <td>{d.type}</td>
-                  <td>{d.nomEtablissement}</td>
-                  <td>
-                    <button
-                      className={styles.detail}
-                      onClick={() => navigate(`/admin/declarationdetails/${d.id}`)}
-                    >
-                      Détails
-                    </button>
-                  </td>
+          <div className={styles.tableContainer}>
+            <table className={styles.table}>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Type</th>
+                  <th>Nom de l’établissement</th>
+                  <th></th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {MOCK_DECLARATIONS.map(d => (
+                  <tr key={d.id}>
+                    <td>{d.id}</td>
+                    <td>{d.type}</td>
+                    <td>{d.nomEtablissement}</td>
+                    <td>
+                      <button
+                        className={styles.detail}
+                        onClick={() => navigate(`/admin/declarationdetails/${d.id}`)}
+                      >
+                        Procéder
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

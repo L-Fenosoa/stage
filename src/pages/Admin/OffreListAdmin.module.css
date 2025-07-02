@@ -1,71 +1,66 @@
-/* src/pages/Admin/OffreListAdmin.module.css */
+.layout {
+  display: flex;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
 
 .container {
   padding: 2rem;
-  min-height: 100vh;
   background: #f3fcf3;
-}
-
-.back {
-  margin-bottom: 1rem;
-  padding: 0.5rem 1rem;
-  background: #fff;
-  border: 2px solid #4c7a5a;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: background 0.3s, color 0.3s;
-  color: #2f4f3b;
-  font-weight: 600;
-}
-
-.back:hover {
-  background: #4c7a5a;
-  color: #fff;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .card {
-  max-width: 800px;
-  margin: auto;
-  padding: 2rem;
-  background: #fff;
-  border-radius: 1rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 1rem 2rem;
+  background: transparent;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .title {
-  text-align: center;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   color: #3c7d53;
-  margin-bottom: 2rem;
+  margin-top: 0;
+  margin-bottom: 3rem;
+  text-align: left;
 }
 
-.offreList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.tableContainer {
+  overflow-x: auto;
+  flex-grow: 1;
 }
 
-.offreItem {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #e9f7eb;
-  padding: 0.75rem 1rem;
-  margin-bottom: 1rem;
-  border: 1px solid #bce3c5;
-  border-radius: 0.5rem;
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #e9f7eb;
 }
 
-.text {
-  font-weight: 500;
+.table thead {
+  background-color: #cdebd6;
   color: #2f4f3b;
+}
+
+.table th,
+.table td {
+  padding: 0.8rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #bce3c5;
+}
+
+.table tbody tr:hover {
+  background-color: #dff5e5;
 }
 
 .detail {
   background: #5cbf74;
   border: none;
   color: #fff;
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 0.9rem;
   border-radius: 0.4rem;
   cursor: pointer;
   transition: background 0.3s;
@@ -76,19 +71,24 @@
   background: #2f6044;
 }
 
-/* Responsive */
 @media (max-width: 600px) {
-  .offreItem {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-
-  .card {
-    padding: 1.5rem;
+  .container {
+    padding: 1rem;
   }
 
   .title {
     font-size: 1.4rem;
+    margin-bottom: 2rem;
+  }
+
+  .table th,
+  .table td {
+    padding: 0.6rem 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .detail {
+    font-size: 0.9rem;
+    padding: 0.3rem 0.7rem;
   }
 }

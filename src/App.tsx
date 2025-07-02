@@ -1,4 +1,3 @@
-// src/App.tsx
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -35,8 +34,7 @@ import OffreListAdmin from './pages/Admin/OffreListAdmin';
 import OffreDetailsAdmin from './pages/Admin/OffreDetailsAdmin';
 import InscriptionListAdmin from './pages/Admin/InscriptionListAdmin';
 import InscriptionDetailsAdmin from './pages/Admin/InscriptionDetailsAdmin';
-
-// Outlet pour le dashboard établissement
+import StatRapport from './pages/Admin/StatRapport'; // ✅ AJOUT ICI
 
 const App: React.FC = () => (
   <BrowserRouter>
@@ -49,7 +47,6 @@ const App: React.FC = () => (
       <Route path="etablissement/identification" element={<Identification />} />
       <Route path="etablissement/identification/:context" element={<Identification />} />
       <Route path="etablissement/ouvertureform" element={<OuvertureForm />} />
-
       <Route path="etablissement/dashboard" element={<Dashboard />}>
         <Route index element={<p style={{ color: 'gray' }}>Bienvenue sur le tableau de bord de votre établissement.</p>} />
         <Route path="offreemploiform" element={<OffreEmploiForm />} />
@@ -78,6 +75,7 @@ const App: React.FC = () => (
       <Route path="admin/offredetailsadmin/:id" element={<OffreDetailsAdmin />} />
       <Route path="admin/inscriptionlistadmin" element={<InscriptionListAdmin />} />
       <Route path="admin/inscriptiondetailsadmin/:id" element={<InscriptionDetailsAdmin />} />
+      <Route path="admin/statrapport" element={<StatRapport />} /> {/* ✅ Route ajoutée */}
 
       {/* 404 */}
       <Route path="*" element={<h2>Page non trouvée</h2>} />

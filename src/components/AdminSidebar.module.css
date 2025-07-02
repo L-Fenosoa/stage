@@ -1,0 +1,50 @@
+.sidebar {
+  width: 220px;
+  background-color: #ffecec;
+  padding: 0;
+  min-height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+
+  /* ✅ Bordure rouge fine à droite */
+  border-right: 1px solid #c62828;
+}
+
+.link {
+  background: transparent;
+  border: 2px solid #c62828;
+  border-width: 0 0 2px 0; /* uniquement bordure du bas */
+  text-align: left;
+  font-weight: 600;
+  padding: 1.5rem 1rem; /* ✅ plus de hauteur */
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  color: #c62828;
+  border-radius: 0; /* pas d'arrondi */
+  display: flex;
+  align-items: center;
+}
+
+/* ✅ bordure haut et bas pour les extrémités */
+.link:first-child {
+  border-top: 1px solid #c62828;
+}
+.link:last-child {
+  border-bottom: 1px solid #c62828;
+}
+
+.link:hover {
+  background: #ec4848;
+}
+
+.active {
+  background: #c62828;
+  color: white;
+}
+
+/* Style pour l'icône svg */
+.icon {
+  flex-shrink: 0;
+  margin-right: 8px;
+}
