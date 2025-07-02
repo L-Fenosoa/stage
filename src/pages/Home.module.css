@@ -9,32 +9,34 @@
 }
 
 .pageTitleContainer {
-  background-color: #f77070; /* rouge adouci */
-  padding: 3rem 2rem; /* plus de padding */
-  border-radius: 0.5rem;
+  background: linear-gradient(135deg, #e53935 0%, #388e3c 100%);
+  padding: 3rem 2rem;
+  border-radius: 1rem;
 }
 
 .titleRow {
   display: flex;
   align-items: center;
   gap: 2rem;
-  padding: 0.5rem 0; /* padding haut/bas */
+  padding: 0.5rem 0;
 }
 
 .logo {
-  height: 90px; /* logo agrandi */
+  height: 90px;
   width: auto;
   object-fit: contain;
   user-select: none;
-  padding: 0.5rem; /* padding autour du logo */
+  padding: 0.5rem;
+  border-radius: 0.5rem; /* adoucissement des bords */
+  background-color: white; /* pour rendre visible le border-radius si fond transparent */
 }
 
 .pageTitle {
-  font-size: 2.5rem; /* taille proportionnelle au logo */
+  font-size: 2.5rem;
   font-weight: bold;
   margin: 0;
-  color: black;
-  padding: 0.5rem 0; /* padding autour du texte */
+  color: white;
+  padding: 0.5rem 0;
 }
 
 .contentRow {
@@ -53,7 +55,7 @@
   background-color: transparent;
   color: black;
   border-radius: 0.5rem;
-  box-shadow: 0 0 10px rgba(128, 128, 128, 0.2); /* bordure ombre grise */
+  box-shadow: 0 0 10px rgba(128, 128, 128, 0.2); /* ombre grise */
 }
 
 .textBlock ul {

@@ -1,8 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './Home.module.css';
 import logo from '../assets/logo.png';
 
 const Home: React.FC = () => {
+  const navigate = useNavigate();
+
   return (
     <div className={styles.homePage}>
       <div className={styles.pageTitleContainer}>
@@ -37,7 +40,12 @@ const Home: React.FC = () => {
           <legend className={styles.legend}>Accéder aux divers espaces :</legend>
           <div className={styles.cards}>
             <div className={styles.card}>
-              <button className={styles.cardBtn}>Espace Établissement</button>
+              <button
+                className={styles.cardBtn}
+                onClick={() => navigate('/etablissementhome')}
+              >
+                Espace Établissement
+              </button>
               <p className={styles.cardDesc}>
                 Gérez facilement vos déclarations d'activité et publiez vos offres d’emploi
                 directement depuis votre espace dédié.
@@ -45,7 +53,12 @@ const Home: React.FC = () => {
             </div>
 
             <div className={styles.card}>
-              <button className={styles.cardBtn}>Espace Travailleur</button>
+              <button
+                className={styles.cardBtn}
+                onClick={() => navigate('/travailleurhome')}
+              >
+                Espace Travailleur
+              </button>
               <p className={styles.cardDesc}>
                 Accédez à des offres personnalisées, postulez en quelques clics et suivez l’évolution
                 de votre parcours professionnel.
