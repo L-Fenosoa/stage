@@ -1,0 +1,109 @@
+/* src/pages/Etablissement/RenseignementsPeriodiquesForm.module.css */
+.container {
+  max-width: 1000px;
+  margin: 1rem auto;
+  padding: 0.5rem;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.back {
+  background: none;
+  border: none;
+  color: #013220;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  text-align: center;
+  font-size: 1.6rem;
+  color: #013220;
+  margin-bottom: 1rem;
+}
+
+.form {
+  padding: 1rem;
+}
+
+.fieldset {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+legend {
+  font-weight: 600;
+  color: #013220;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+input[type="text"],
+input[type="date"],
+select {
+  width: 100%;
+  padding: 0.4rem;
+  margin-top: 0.2rem;
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  font-size: 0.9rem;
+}
+
+.buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.submit,
+.reset {
+  flex: 1;
+  padding: 0.6rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border-radius: 3px;
+  border: none;
+}
+
+.submit {
+  background: #013220;
+  color: #fff;
+}
+
+.reset {
+  background: #ddd;
+  color: #333;
+}
+
+/* Tableau enquête sur l’emploi */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+}
+
+.table th,
+.table td {
+  border: 1px solid #ccc;
+  text-align: center;
+  padding: 0.3rem;
+  font-size: 0.85rem;
+}
+
+.tblInput {
+  width: 100%;
+  border: none;
+  text-align: right;
+  color: #333;
+  padding: 0.2rem;
+  background: transparent;
+}
+
+.table tr:nth-child(even) {
+  background: #fafafa;
+}

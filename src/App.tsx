@@ -1,86 +1,205 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
 
-// Pages génériques
-import Home from './pages/Home';
+import Navbar from './components/Navbar/Navbar';
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 
-// Espace Établissement
-import EtablissementHome from './pages/Etablissement/EtablissementHome';
-import Identification from './pages/Etablissement/Identification';
-import OuvertureForm from './pages/Etablissement/OuvertureForm';
-import Dashboard from './pages/Etablissement/Dashboard';
-import OffreEmploiForm from './pages/Etablissement/OffreEmploiForm';
-import RenseignementsPeriodiquesForm from './pages/Etablissement/RenseignementsPeriodiquesForm';
-import ReouvertureForm from './pages/Etablissement/ReouvertureForm';
-import FermetureForm from './pages/Etablissement/FermetureForm';
+import Home from './pages/Home/Home';
 
-// Espace Travailleur
-import TravailleurHome from './pages/Travailleur/TravailleurHome';
-import IdentificationTrav from './pages/Travailleur/IdentificationTrav';
-import DashboardTrav from './pages/Travailleur/DashboardTrav';
-import MiseAJourInfos from './pages/Travailleur/MiseAJourInfos';
-import OffreList from './pages/Travailleur/OffreList';
-import OffreDetails from './pages/Travailleur/OffreDetails';
-import InscriptionTrav from './pages/Travailleur/InscriptionTrav';
+// Établissement
+import EtablissementHome from './pages/Etablissement/EtablissementHome/EtablissementHome';
+import Identification from './pages/Etablissement/Identification/Identification';
+import OuvertureForm from './pages/Etablissement/OuvertureForm/OuvertureForm';
+import Dashboard from './pages/Etablissement/Dashboard/Dashboard';
+import OffreEmploiForm from './pages/Etablissement/OffreEmploiForm/OffreEmploiForm';
+import RenseignementsPeriodiquesForm from './pages/Etablissement/RenseignementsPeriodiquesForm/RenseignementsPeriodiquesForm';
+import ReouvertureForm from './pages/Etablissement/ReouvertureForm/ReouvertureForm';
+import FermetureForm from './pages/Etablissement/FermetureForm/FermetureForm';
 
-// Espace Admin
-import AdminIdentification from './pages/Admin/AdminIdentification';
-import AdminDashboard from './pages/Admin/AdminDashboard';
-import DeclarationList from './pages/Admin/DeclarationList';
-import DeclarationDetails from './pages/Admin/DeclarationDetails';
-import RensList from './pages/Admin/RensList';
-import RensDetails from './pages/Admin/RensDetails';
-import OffreListAdmin from './pages/Admin/OffreListAdmin';
-import OffreDetailsAdmin from './pages/Admin/OffreDetailsAdmin';
-import InscriptionListAdmin from './pages/Admin/InscriptionListAdmin';
-import InscriptionDetailsAdmin from './pages/Admin/InscriptionDetailsAdmin';
-import StatRapport from './pages/Admin/StatRapport'; // ✅ AJOUT ICI
+// Travailleur
+import TravailleurHome from './pages/Travailleur/TravailleurHome/TravailleurHome';
+import IdentificationTrav from './pages/Travailleur/IdentificationTrav/IdentificationTrav';
+import DashboardTrav from './pages/Travailleur/DashboardTrav/DashboardTrav';
+import MiseAJourInfos from './pages/Travailleur/MiseAJourInfos/MiseAJourInfos';
+import OffreList from './pages/Travailleur/OffreList/OffreList';
+import OffreDetails from './pages/Travailleur/OffreDetails/OffreDetails';
+import InscriptionTrav from './pages/Travailleur/InscriptionTrav/InscriptionTrav';
+
+// Admin
+import AdminIdentification from './pages/Admin/AdminIdentification/AdminIdentification';
+import AdminDashboard from './pages/Admin/AdminDashboard/AdminDashboard';
+import DeclarationList from './pages/Admin/DeclarationList/DeclarationList';
+import DeclarationDetails from './pages/Admin/DeclarationDetails/DeclarationDetails';
+import RensList from './pages/Admin/RensList/RensList';
+import RensDetails from './pages/Admin/RensDetails/RensDetails';
+import OffreListAdmin from './pages/Admin/OffreListAdmin/OffreListAdmin';
+import OffreDetailsAdmin from './pages/Admin/OffreDetailsAdmin/OffreDetailsAdmin';
+import InscriptionListAdmin from './pages/Admin/InscriptionListAdmin/InscriptionListAdmin';
+import InscriptionDetailsAdmin from './pages/Admin/InscriptionDetailsAdmin/InscriptionDetailsAdmin';
+import StatRapport from './pages/Admin/StatRapport/StatRapport';
+
+// Auth
+import Login from './pages/Auth/Login';
+import Register from './pages/Auth/Register';
 
 const App: React.FC = () => (
-  <BrowserRouter>
-    <Routes>
-      {/* Page d'accueil */}
-      <Route path="/" element={<Home />} />
+  <AuthProvider>
+    <BrowserRouter>
+      <Navbar />
 
-      {/* Espace Établissement */}
-      <Route path="etablissementhome" element={<EtablissementHome />} />
-      <Route path="etablissement/identification" element={<Identification />} />
-      <Route path="etablissement/identification/:context" element={<Identification />} />
-      <Route path="etablissement/ouvertureform" element={<OuvertureForm />} />
-      <Route path="etablissement/dashboard" element={<Dashboard />}>
-        <Route index element={<p style={{ color: 'gray' }}>Bienvenue sur le tableau de bord de votre établissement.</p>} />
-        <Route path="offreemploiform" element={<OffreEmploiForm />} />
-        <Route path="renseignementsperiodiquesform" element={<RenseignementsPeriodiquesForm />} />
-        <Route path="reouvertureform" element={<ReouvertureForm />} />
-        <Route path="fermetureform" element={<FermetureForm />} />
-      </Route>
+      <Routes>
+        {/* Public */}
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
 
-      {/* Espace Travailleur */}
-      <Route path="travailleurhome" element={<TravailleurHome />} />
-      <Route path="travailleur/identificationtrav" element={<IdentificationTrav />} />
-      <Route path="travailleur/dashboardtrav" element={<DashboardTrav />} />
-      <Route path="travailleur/miseajourinfos" element={<MiseAJourInfos />} />
-      <Route path="travailleur/offrelist" element={<OffreList />} />
-      <Route path="travailleur/offredetails/:id" element={<OffreDetails />} />
-      <Route path="travailleur/inscriptiontrav" element={<InscriptionTrav />} />
+        {/* Établissement */}
+        <Route path="/etablissement/identification" element={<Identification />} />
+        <Route path="/etablissementhome" element={<EtablissementHome />} />
+        <Route path="/etablissement/ouvertureform" element={<OuvertureForm />} />
 
-      {/* Espace Admin */}
-      <Route path="adminidentification" element={<AdminIdentification />} />
-      <Route path="admin/admindashboard" element={<AdminDashboard />} />
-      <Route path="admin/declarationlist" element={<DeclarationList />} />
-      <Route path="admin/declarationdetails/:id" element={<DeclarationDetails />} />
-      <Route path="admin/renslist" element={<RensList />} />
-      <Route path="admin/rensdetails/:id" element={<RensDetails />} />
-      <Route path="admin/offrelistadmin" element={<OffreListAdmin />} />
-      <Route path="admin/offredetailsadmin/:id" element={<OffreDetailsAdmin />} />
-      <Route path="admin/inscriptionlistadmin" element={<InscriptionListAdmin />} />
-      <Route path="admin/inscriptiondetailsadmin/:id" element={<InscriptionDetailsAdmin />} />
-      <Route path="admin/statrapport" element={<StatRapport />} /> {/* ✅ Route ajoutée */}
+        <Route
+          path="/etablissement/dashboard/*"
+          element={
+            <ProtectedRoute requiredRole="etablissement">
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<p>Bienvenue sur votre tableau de bord établissement.</p>} />
+          <Route path="offreemploiform" element={<OffreEmploiForm />} />
+          <Route path="renseignementsperiodiquesform" element={<RenseignementsPeriodiquesForm />} />
+          <Route path="reouvertureform" element={<ReouvertureForm />} />
+          <Route path="fermetureform" element={<FermetureForm />} />
+        </Route>
 
-      {/* 404 */}
-      <Route path="*" element={<h2>Page non trouvée</h2>} />
-    </Routes>
-  </BrowserRouter>
+        {/* Travailleur */}
+        <Route path="/travailleur/identificationtrav" element={<IdentificationTrav />} />
+        <Route path="/travailleurhome" element={<TravailleurHome />} />
+        <Route path="/travailleur/inscriptiontrav" element={<InscriptionTrav />} />
+
+        <Route
+          path="/travailleur/dashboardtrav"
+          element={
+            <ProtectedRoute requiredRole="travailleur">
+              <DashboardTrav />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/travailleur/miseajourinfos"
+          element={
+            <ProtectedRoute requiredRole="travailleur">
+              <MiseAJourInfos />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/travailleur/offrelist"
+          element={
+            <ProtectedRoute requiredRole="travailleur">
+              <OffreList />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/travailleur/offredetails/:id"
+          element={
+            <ProtectedRoute requiredRole="travailleur">
+              <OffreDetails />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* Admin */}
+        <Route path="/adminidentification" element={<AdminIdentification />} />
+        <Route
+          path="/admin/admindashboard"
+          element={
+            <ProtectedRoute requiredRole="admin">
+              <AdminDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/declarationlist"
+          element={
+            <ProtectedRoute requiredRole="admin">
+              <DeclarationList />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/declarationdetails/:id"
+          element={
+            <ProtectedRoute requiredRole="admin">
+              <DeclarationDetails />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/renslist"
+          element={
+            <ProtectedRoute requiredRole="admin">
+              <RensList />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/rensdetails/:id"
+          element={
+            <ProtectedRoute requiredRole="admin">
+              <RensDetails />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/offrelistadmin"
+          element={
+            <ProtectedRoute requiredRole="admin">
+              <OffreListAdmin />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/offredetailsadmin/:id"
+          element={
+            <ProtectedRoute requiredRole="admin">
+              <OffreDetailsAdmin />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/inscriptionlistadmin"
+          element={
+            <ProtectedRoute requiredRole="admin">
+              <InscriptionListAdmin />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/inscriptiondetailsadmin/:id"
+          element={
+            <ProtectedRoute requiredRole="admin">
+              <InscriptionDetailsAdmin />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/statrapport"
+          element={
+            <ProtectedRoute requiredRole="admin">
+              <StatRapport />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* 404 */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </BrowserRouter>
+  </AuthProvider>
 );
 
 export default App;

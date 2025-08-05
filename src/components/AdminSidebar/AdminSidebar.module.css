@@ -1,0 +1,57 @@
+/* src/components/AdminSidebar/AdminSidebar.module.css */
+:root {
+  --font: 'Segoe UI', sans-serif;
+  --white: #ffffff;
+  --bg: #f2f2f2;
+  --sapin: #013220;
+  --light-green: #eaf9ec;
+  --dark-green: #006400;
+  --red: #C8102E;
+}
+
+.sidebar {
+  width: 200px;
+  background: var(--light-green);
+  border-right: 2px solid var(--dark-green);
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+}
+
+.link {
+  background: none;
+  border: none;
+  text-align: left;
+  font-family: var(--font);
+  font-size: 1rem;
+  color: var(--dark-green);
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.link:not(:last-child) {
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.link:hover {
+  background: rgba(0, 100, 0, 0.1);
+}
+
+.active {
+  background: var(--dark-green);
+  color: var(--white);
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    overflow-x: auto;
+  }
+  .link {
+    flex: 1 0 auto;
+    padding: 0.75rem;
+    text-align: center;
+  }
+}
