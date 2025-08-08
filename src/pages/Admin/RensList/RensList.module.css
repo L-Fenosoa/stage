@@ -16,24 +16,6 @@
   overflow-x: hidden;
 }
 
-.back {
-  margin-bottom: 1rem;
-  padding: 0.5rem 1rem;
-  background: #fff;
-  border: 2px solid #4c7a5a;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: background 0.3s, color 0.3s;
-  color: #2f4f3b;
-  font-weight: 600;
-  align-self: flex-start;
-}
-
-.back:hover {
-  background: #4c7a5a;
-  color: #fff;
-}
-
 .card {
   padding: 1rem 2rem;
   background: transparent;
@@ -95,13 +77,34 @@
   background: #2f6044;
 }
 
+/* Styles pour le modal */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  width: 90%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow: auto;
+  background: white;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
 @media (max-width: 600px) {
   .container {
     padding: 1rem;
-  }
-
-  .back {
-    margin-bottom: 0.75rem;
   }
 
   .title {
@@ -118,5 +121,9 @@
   .detail {
     font-size: 0.9rem;
     padding: 0.3rem 0.7rem;
+  }
+  
+  .modalContent {
+    padding: 1rem;
   }
 }

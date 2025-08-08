@@ -1,3 +1,4 @@
+// src/components/Navbar/Navbar.tsx
 import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
@@ -15,7 +16,7 @@ const Navbar: React.FC = () => {
     } else if (role === 'etablissement') {
       navigate('/etablissement/dashboard');
     } else if (role === 'admin') {
-      navigate('/admin/admindashboard');
+      navigate('/admin/statrapport');
     }
     setDropdownOpen(false);
   };
@@ -55,7 +56,7 @@ const Navbar: React.FC = () => {
                   onClick={handleDashboardRedirect}
                   className={styles.authBtn}
                 >
-                  Informations
+                  Mon tableau de bord
                 </button>
                 <button
                   onClick={handleLogout}
@@ -115,6 +116,6 @@ const Navbar: React.FC = () => {
       </div>
     </header>
   );
-};
+}; // ← <== il manquait cette accolade pour fermer le composant
 
 export default Navbar;

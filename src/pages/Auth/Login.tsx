@@ -13,7 +13,7 @@ const Login: React.FC = () => {
     login(name, role);
     if (role === 'travailleur') navigate('/travailleur/dashboardtrav');
     else if (role === 'etablissement') navigate('/etablissement/dashboard');
-    else navigate('/admin/admindashboard');
+    else navigate('/admin/adminetablissementdashboard');
   };
 
   return (

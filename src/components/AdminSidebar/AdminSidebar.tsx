@@ -10,12 +10,10 @@ const AdminSidebar: React.FC<Props> = ({ currentPath }) => {
   const navigate = useNavigate();
 
   const items = [
-    { label: 'Espace admin', path: '/admin/admindashboard' },
-    { label: 'Statistique et rapport', path: '/admin/statrapport' },
-    { label: 'Déclarations', path: '/admin/declarationlist' },
-    { label: 'Renseignements', path: '/admin/renslist' },
-    { label: 'Offres', path: '/admin/offrelistadmin' },
-    { label: 'Inscriptions', path: '/admin/inscriptionlistadmin' },
+    { label: 'Accueil',                   path: '/',                                 icon: '←' },
+    { label: 'Statistique & Rapports',    path: '/admin/statrapport' },
+    { label: 'Établissement',              path: '/admin/adminetablissementdashboard' },
+    { label: 'Travailleur (Inscriptions)',path: '/admin/travailleur/inscriptionlistadmin' },
   ];
 
   return (
@@ -24,9 +22,14 @@ const AdminSidebar: React.FC<Props> = ({ currentPath }) => {
         <button
           key={item.path}
           type="button"
-          className={`${styles.link} ${currentPath === item.path ? styles.active : ''}`}
+          className={`${styles.link} ${
+            currentPath === item.path || currentPath.startsWith(item.path + '/')
+              ? styles.active
+              : ''
+          }`}
           onClick={() => navigate(item.path)}
         >
+          {item.icon && <span className={styles.icon}>{item.icon}</span>}
           {item.label}
         </button>
       ))}

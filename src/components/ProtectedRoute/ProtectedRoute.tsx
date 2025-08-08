@@ -1,4 +1,3 @@
-// src/components/ProtectedRoute/ProtectedRoute.tsx
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
@@ -12,11 +11,9 @@ const ProtectedRoute: React.FC<Props> = ({ children, requiredRole }) => {
   const { isAuthenticated, role } = useAuth();
 
   if (!isAuthenticated) {
-    // pas authentifié → accueil
     return <Navigate to="/" replace />;
   }
   if (requiredRole && role !== requiredRole) {
-    // rôle non autorisé → accueil
     return <Navigate to="/" replace />;
   }
   return <>{children}</>;

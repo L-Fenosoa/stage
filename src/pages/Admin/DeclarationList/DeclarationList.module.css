@@ -1,131 +1,237 @@
-.layout {
-  display: flex;
-  min-height: 100vh;
-  overflow-x: hidden; /* Évite les débordements horizontaux */
+:root {
+  --nav-height: 64px;
+  --sidebar-width: 200px;
+  --font: 'Segoe UI', sans-serif;
+  --bg: #f3fcf3;
+  --card-bg: #ffffff;
+  --accent: #3c7d53;
+  --muted: #6b6b6b;
+  --border: #e6efe6;
+  --gap: 1rem;
 }
 
+/* Layout global */
+.layout {
+  padding-top: var(--nav-height);
+  display: flex;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: var(--bg);
+}
+
+/* Conteneur principal */
 .container {
-  padding: 2rem;
-  background: #f3fcf3;
+  padding: 1.25rem;
+  background: transparent;
   flex: 1;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
   box-sizing: border-box;
-  overflow-x: hidden; /* Prévient le scroll horizontal */
+  gap: 1.25rem;
 }
 
-.back {
-  margin-bottom: 1rem;
-  padding: 0.5rem 1rem;
-  background: #fff;
-  border: 2px solid #4c7a5a;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: background 0.3s, color 0.3s;
-  color: #2f4f3b;
-  font-weight: 600;
-  align-self: flex-start;
+/* Top counters area */
+.topStats {
+  display: flex;
+  gap: 1rem;
+  align-items: stretch;
+  justify-content: space-between;
+  width: 100%;
 }
 
-.back:hover {
-  background: #4c7a5a;
-  color: #fff;
+/* Left group: trois compteurs par type */
+.leftStats {
+  display: flex;
+  gap: 0.75rem;
+  align-items: stretch;
+  flex: 1;
+}
+.statCard {
+  flex: 1;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+}
+.statNumber {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+.statLabel {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 0.25rem;
 }
 
+/* Right group: totals des établissements */
+.rightStats {
+  display: flex;
+  gap: 0.75rem;
+  flex-direction: column;
+  width: 220px;
+}
+.statCardAlt {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+}
+.statNumberAlt {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+.statLabelAlt {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 0.15rem;
+}
+
+/* Card / table */
 .card {
-  padding: 1rem 2rem;
+  padding: 1rem 1.25rem;
   background: transparent;
-  border-radius: 0;
-  box-shadow: none;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 100%;
   box-sizing: border-box;
 }
 
 .title {
   text-align: left;
-  font-size: 1.8rem;
-  color: #3c7d53;
-  margin-top: 0;
-  margin-bottom: 3rem;
+  font-size: 1.6rem;
+  color: var(--accent);
+  margin: 0 0 1rem 0;
 }
 
+/* Table container : permet scroll horizontal si besoin */
 .tableContainer {
   overflow-x: auto;
-  flex-grow: 1;
-  width: 100%;
+  flex: 1;
 }
 
+/* Table */
 .table {
   width: 100%;
   border-collapse: collapse;
-  background-color: #e9f7eb;
-  min-width: 600px; /* Pour permettre un scroll horizontal si l'écran est étroit */
+  background-color: #ffffff;
+  min-width: 700px;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.02);
 }
 
 .table thead {
-  background-color: #cdebd6;
-  color: #2f4f3b;
+  background-color: #f0faf0;
+  color: var(--accent);
+  font-weight: 700;
 }
 
 .table th,
 .table td {
-  padding: 0.8rem 1rem;
+  padding: 0.65rem 0.9rem;
   text-align: left;
-  border-bottom: 1px solid #bce3c5;
+  border-bottom: 1px solid #f1f7f1;
+  font-size: 0.95rem;
+  color: #222;
 }
 
-.table tbody tr:hover {
-  background-color: #dff5e5;
-}
-
+/* Bouton */
 .detail {
   background: #5cbf74;
   border: none;
   color: #fff;
-  padding: 0.4rem 0.9rem;
-  border-radius: 0.4rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 0.35rem;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.18s ease;
   font-weight: 600;
+  font-size: 0.9rem;
+}
+.detail:hover {
+  background: #449a59;
 }
 
-.detail:hover {
-  background: #2f6044;
+/* Empty row */
+.emptyRow {
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--muted);
+}
+
+/* Styles pour le modal */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow: auto;
 }
 
 /* Responsive */
+@media (max-width: 900px) {
+  .topStats {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .rightStats {
+    width: 100%;
+    flex-direction: row;
+  }
+  .rightStats .statCardAlt {
+    flex: 1;
+  }
+  .leftStats {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+  .table {
+    min-width: 600px;
+  }
+}
+
 @media (max-width: 600px) {
   .container {
-    padding: 1rem;
+    padding: 0.75rem;
   }
-
-  .back {
+  .leftStats {
+    flex-direction: column;
+  }
+  .statCard {
+    padding: 0.6rem;
+  }
+  .title {
+    font-size: 1.25rem;
     margin-bottom: 0.75rem;
   }
-
-  .title {
-    font-size: 1.4rem;
-    margin-top: 0;
-    margin-bottom: 2rem;
-  }
-
   .table {
     min-width: 100%;
   }
-
-  .table th,
-  .table td {
-    padding: 0.6rem 0.5rem;
+  .table th, .table td {
+    padding: 0.5rem 0.5rem;
     font-size: 0.9rem;
   }
-
   .detail {
-    font-size: 0.9rem;
-    padding: 0.3rem 0.7rem;
+    padding: 0.28rem 0.55rem;
+    font-size: 0.85rem;
+  }
+  .modalContent {
+    width: 95%;
   }
 }

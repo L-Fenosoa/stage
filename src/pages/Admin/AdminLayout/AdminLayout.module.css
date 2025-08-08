@@ -1,0 +1,21 @@
+/* src/pages/Admin/AdminLayout.module.css */
+:root {
+  --nav-height: 64px;
+  --sidebar-width: 200px;
+  --bg-light: #f2f2f2;
+}
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background: var(--bg-light);
+}
+
+.container {
+  margin-top: var(--nav-height);
+  margin-left: var(--sidebar-width);
+  padding: 1rem;
+  flex: 1;
+  overflow-y: auto;
+  background: #fff;
+}

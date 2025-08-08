@@ -1,32 +1,133 @@
+:root {
+  --nav-height: 64px;
+  --sidebar-width: 200px;
+  --font: 'Segoe UI', sans-serif;
+  --bg-light: #f2f2f2;
+  --bg-white: #ffffff;
+  --green-dark: #006400;
+  --green-light: #eaf9ec;
+  --border: #013220;
+}
+
+/* === Layout global === */
 .layout {
   display: flex;
   min-height: 100vh;
+  background: var(--bg-light);
 }
-
+/* Sidebar (fixe) est géré dans AdminSidebar */
 .container {
+  margin-top: var(--nav-height);
+  margin-left: var(--sidebar-width);
   flex: 1;
-  background-color: #f3fcf3;
+  overflow-y: auto;
+  background: var(--bg-white);
+}
+
+/* === Onglets “dossier” === */
+.folderTabs {
+  position: sticky;
+  top: 0;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
+  background: var(--bg-white);
+  z-index: 5;
+}
+.tab {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  background: var(--green-light);
+  border: 1px solid var(--border);
+  border-bottom: none;
+  /* seul coin sup droit fortement arrondi */
+  border-top-right-radius: 24px;
+  font-family: var(--font);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.tab + .tab {
+  margin-left: -1px; /* écrase la bordure partagée */
+}
+.tab:hover {
+  background: #d4f1d4;
+}
+/* onglet actif + zone de contenu partagent le même fond */
+.active {
+  background: var(--bg-white);
+  border-bottom: 1px solid var(--bg-white);
 }
 
+/* === Contenu des onglets === */
 .content {
-  text-align: center;
-  background: white;
-  padding: 3rem;
-  border-radius: 1rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  /* plus d’espacement entre sections */
+  padding: 0;
 }
 
-.title {
-  font-size: 2rem;
-  color: #3c7d53;
+/* === Sections unifiées === */
+.kpiSection,
+.statsSection,
+.exportSection {
+  margin: 0;               /* plus d’espace vertical */
+  padding: 1.5rem;
+  border-top: 1px solid #ddd;
+}
+.kpiSection h2,
+.statsSection h2,
+.exportSection h2 {
   margin-bottom: 1rem;
 }
 
-.info {
-  font-size: 1.2rem;
-  color: #666;
+/* === KPI Cards === */
+.kpiCards {
+  display: flex;
+  gap: 1rem;
+}
+.kpiCard {
+  flex: 1;
+  background: var(--green-light);
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  text-align: center;
+}
+.kpiLabel { font-weight: 600; color: var(--green-dark); }
+.kpiValue { font-size: 1.5rem; font-weight: bold; color: var(--border); }
+
+/* === Graphiques placeholders === */
+.chartsRow {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.chartPlaceholder {
+  flex: 1;
+  min-width: 200px;
+  background: #fafafa;
+  border: 1px dashed #ccc;
+  border-radius: 6px;
+  padding: 1rem;
+  text-align: center;
+}
+.topList {
+  margin-top: 0.5rem;
+  padding-inline-start: 1.2rem;
+}
+
+/* === Export buttons === */
+.exportPlaceholder {
+  display: flex;
+  gap: 1rem;
+}
+.exportBtn {
+  background: var(--green-dark);
+  color: var(--bg-white);
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.exportBtn:hover {
+  background: #004a00;
 }

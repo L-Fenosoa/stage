@@ -28,7 +28,7 @@ import InscriptionTrav from './pages/Travailleur/InscriptionTrav/InscriptionTrav
 
 // Admin
 import AdminIdentification from './pages/Admin/AdminIdentification/AdminIdentification';
-import AdminDashboard from './pages/Admin/AdminDashboard/AdminDashboard';
+import AdminEtablissementDashboard from './pages/Admin/AdminEtablissementDashboard/AdminEtablissementDashboard';
 import DeclarationList from './pages/Admin/DeclarationList/DeclarationList';
 import DeclarationDetails from './pages/Admin/DeclarationDetails/DeclarationDetails';
 import RensList from './pages/Admin/RensList/RensList';
@@ -112,13 +112,24 @@ const App: React.FC = () => (
           }
         />
 
-        {/* Admin */}
+        {/* Admin identification */}
         <Route path="/adminidentification" element={<AdminIdentification />} />
+
+        {/* Admin */}
         <Route
-          path="/admin/admindashboard"
+          path="/admin/statrapport"
           element={
             <ProtectedRoute requiredRole="admin">
-              <AdminDashboard />
+              <StatRapport />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/adminetablissementdashboard"
+          element={
+            <ProtectedRoute requiredRole="admin">
+              <AdminEtablissementDashboard />
             </ProtectedRoute>
           }
         />
@@ -170,8 +181,9 @@ const App: React.FC = () => (
             </ProtectedRoute>
           }
         />
+
         <Route
-          path="/admin/inscriptionlistadmin"
+          path="/admin/travailleur/inscriptionlistadmin"
           element={
             <ProtectedRoute requiredRole="admin">
               <InscriptionListAdmin />
@@ -183,14 +195,6 @@ const App: React.FC = () => (
           element={
             <ProtectedRoute requiredRole="admin">
               <InscriptionDetailsAdmin />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/admin/statrapport"
-          element={
-            <ProtectedRoute requiredRole="admin">
-              <StatRapport />
             </ProtectedRoute>
           }
         />

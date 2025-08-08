@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import styles from './RensList.module.css';
 import Sidebar from '../../../components/AdminSidebar/AdminSidebar';
+import RensDetails from '../RensDetails/RensDetails';
 
 interface RensItem {
   id: string;
@@ -17,12 +18,13 @@ const MOCK_RENS: RensItem[] = [
 const RensList: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [selectedRens, setSelectedRens] = useState<string | null>(null);
 
   return (
     <div className={styles.layout}>
       <Sidebar currentPath={location.pathname} />
+      
       <div className={styles.container}>
-
         <div className={styles.card}>
           <h4 className={styles.title}>Liste des renseignements périodiques</h4>
 
@@ -30,8 +32,7 @@ const RensList: React.FC = () => {
             <table className={styles.table}>
               <thead>
                 <tr>
-                  <th>ID</th>
-                  <th>Nom de l’établissement</th>
+                  <th>Nom de l'établissement</th>
                   <th>Année</th>
                   <th>Action</th>
                 </tr>
@@ -39,13 +40,12 @@ const RensList: React.FC = () => {
               <tbody>
                 {MOCK_RENS.map(r => (
                   <tr key={r.id}>
-                    <td>{r.id}</td>
                     <td>{r.nomEtablissement}</td>
                     <td>{r.date.slice(0, 4)}</td>
                     <td>
                       <button
                         className={styles.detail}
-                        onClick={() => navigate(`/admin/rensdetails/${r.id}`)}
+                        onClick={() => setSelectedRens(r.id)}
                       >
                         Détails
                       </button>
@@ -57,6 +57,18 @@ const RensList: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Modal pour les détails */}
+      {selectedRens && (
+        <div className={styles.modalOverlay}>
+          <div className={styles.modalContent}>
+            <RensDetails 
+              id={selectedRens} 
+              onClose={() => setSelectedRens(null)} 
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

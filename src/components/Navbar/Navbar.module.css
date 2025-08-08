@@ -1,107 +1,152 @@
+/* src/components/Navbar/Navbar.module.css */
+
+:root {
+  --nav-height: 64px;
+  --font: 'Segoe UI', sans-serif;
+  --white: #ffffff;
+  --red: #d12424;
+  --red-light: rgba(209, 36, 36, 0.1);
+  --green: #28a745;
+  --green-dark: #218838;
+}
+
+/* On fixe la nav en haut */
 .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--nav-height);
+  background-color: var(--white);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #ffffff; /* blanc */
-  padding: 1rem 2rem;
+  padding: 0 2rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  position: sticky;
-  top: 0;
-  z-index: 999;
+  z-index: 1000;
+  font-family: var(--font);
 }
 
+/* Logo */
+.left {
+  display: flex;
+  align-items: center;
+}
 .logo {
-  height: 50px;
+  height: 40px;
   cursor: pointer;
 }
 
+/* Zone des liens / dropdown */
 .right {
   position: relative;
 }
-
 .link {
   background: none;
   border: none;
-  color: #d12424; /* rouge */
+  color: var(--red);
   font-size: 1rem;
-  cursor: pointer;
   font-weight: bold;
   padding: 0.5rem 1rem;
   border-radius: 5px;
+  cursor: pointer;
   transition: background 0.3s;
 }
-
-.link:hover {
-  background-color: rgba(209, 36, 36, 0.1);
+.link:hover,
+.link:focus {
+  background-color: var(--red-light);
 }
 
+/* Dropdown collé juste sous le bouton */
 .authDropdown {
   position: absolute;
-  top: 100%;
   right: 0;
-  background-color: #ffffff;
+  background-color: var(--white);
   border: 1px solid #ccc;
   padding: 1rem;
   width: 220px;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  max-height: calc(100vh - var(--nav-height));
+  overflow-y: auto;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  z-index: 1000;
   animation: fadeIn 0.2s ease-in-out;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-5%);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+/* Texte et boutons du dropdown */
 .authText {
   font-size: 0.95rem;
   font-weight: 500;
   color: #333;
   margin-bottom: 0.5rem;
 }
-
 .authBtn {
+  display: block;
+  width: 100%;
   padding: 0.5rem;
+  margin-bottom: 0.5rem;
   border: none;
-  background-color: #28a745; /* vert */
-  color: white;
+  background-color: var(--green);
+  color: var(--white);
   font-weight: bold;
   border-radius: 4px;
   cursor: pointer;
-  transition: background 0.2s ease-in-out;
+  transition: background 0.2s;
 }
-
 .authBtn:hover {
-  background-color: #218838;
+  background-color: var(--green-dark);
 }
-
 .authOr {
   text-align: center;
   color: #999;
   font-size: 0.85rem;
-  margin: 0.25rem 0;
+  margin: 0.5rem 0;
 }
-
 .authAdmin {
+  display: block;
+  width: 100%;
   padding: 0.5rem;
-  background-color: #d12424; /* rouge */
-  color: white;
   border: none;
+  background-color: var(--red);
+  color: var(--white);
   font-weight: bold;
   border-radius: 4px;
   cursor: pointer;
-  transition: background 0.2s ease-in-out;
+  transition: background 0.2s;
 }
-
 .authAdmin:hover {
   background-color: #a51818;
+}
+
+/* Anim */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5%); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar { padding: 0 1rem; }
+  .logo   { height: 32px; }
+  .link   { padding: 0.4rem 0.8rem; font-size: 0.9rem; }
+  .authDropdown { width: 180px; }
+}
+@media (max-width: 480px) {
+  .navbar {
+    flex-direction: column;
+    height: auto;
+    padding: 0.5rem 1rem;
+  }
+  .right {
+    margin-top: 0.5rem;
+    justify-content: flex-end;
+  }
+  .link {
+    font-size: 0.85rem;
+    padding: 0.3rem 0.6rem;
+  }
+  .authDropdown {
+    width: 100%;
+    left: 0;
+    top: calc(var(--nav-height) + 0.5rem);
+    max-height: 50vh;
+  }
 }

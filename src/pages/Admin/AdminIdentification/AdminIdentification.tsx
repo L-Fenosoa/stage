@@ -15,7 +15,7 @@ const AdminIdentification: React.FC = () => {
     // TODO: ici appeler votre API pour vérifier `user` / `pass`
     // Si OK :
     login(user, 'admin');
-    navigate('/admin/admindashboard');
+    navigate('/admin/statrapport');
   };
 
   return (
