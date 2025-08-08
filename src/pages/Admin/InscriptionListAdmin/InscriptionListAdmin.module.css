@@ -1,94 +1,139 @@
+:root{
+  --nav-height: 64px;
+  --sidebar-width: 200px;
+  --font: 'Segoe UI', sans-serif;
+  --bg: #f3fcf3;
+  --card-bg: #ffffff;
+  --muted: #6b6b6b;
+  --accent: #3c7d53;
+  --accent-dark: #2f6044;
+  --pending-bg: #efefef;
+  --border: #e7f1e7;
+  --gap: 1rem;
+}
+
+/* layout général : on tient compte de la navbar/ sidebar */
 .layout {
+  padding-top: var(--nav-height);
   display: flex;
   min-height: 100vh;
-  overflow-x: hidden;
+  background: var(--bg);
+  overflow: hidden; /* pas de scroll global */
 }
 
-.container {
-  padding: 2rem;
-  background: #f3fcf3;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+/* assume que AdminSidebar positionne la sidebar fixe */
+.layout > nav {
+  flex: 0 0 var(--sidebar-width);
 }
 
-.card {
-  padding: 1rem 2rem;
-  background: transparent;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.title {
-  font-size: 1.8rem;
-  color: #3c7d53;
+/* main occupe la zone restante et hauteur exacte */
+.main {
+  margin-left: var(--sidebar-width);
   margin-top: 0;
-  margin-bottom: 3rem;
-  text-align: left;
+  flex: 1;
+  height: calc(100vh - var(--nav-height));
+  display: flex;
+  flex-direction: column;
+  padding: calc(var(--gap));
+  box-sizing: border-box;
+  gap: var(--gap);
+  overflow: hidden; /* pas de scroll global */
 }
 
+/* top toggles (deux boutons) */
+.topControls { display: flex; justify-content: center; align-items: center; }
+.toggleGroup { display: flex; gap: 0.75rem; align-items: stretch; }
+
+/* bouton toggle */
+.toggleBtn {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  min-width: 180px; padding: 0.5rem 0.75rem; background: var(--card-bg);
+  border: 1px solid var(--border); border-radius: 8px; cursor: pointer;
+  font-family: var(--font); text-align: center; box-shadow: 0 6px 12px rgba(0,0,0,0.03);
+  transition: background 0.12s ease, transform 0.06s ease; user-select: none;
+}
+.toggleBtn:active { transform: translateY(1px); }
+
+.toggleBtn .count { font-size: 1.25rem; font-weight: 700; color: var(--accent); }
+.toggleBtn .label { font-size: 0.85rem; color: var(--muted); margin-top: 0.25rem; }
+
+/* état actif : contraste corrigé (label & count deviennent blanc) */
+.toggleBtn.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+  box-shadow: 0 8px 16px rgba(20,60,36,0.08);
+}
+.toggleBtn.active .count { color: #fff; }
+.toggleBtn.active .label { color: #fff; }
+
+/* contenu principal card */
+.content { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+.card { flex: 1; display: flex; flex-direction: column; background: transparent; gap: 0.75rem; }
+
+/* titre */
+.title { margin: 0; font-size: 1.4rem; color: var(--accent); }
+
+/* table container : la seule zone qui scroll */
 .tableContainer {
-  overflow-x: auto;
-  flex-grow: 1;
+  flex: 1; overflow: auto; border-radius: 8px; border: 1px solid var(--border); background: var(--card-bg);
 }
 
-.table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: #e9f7eb;
+/* table */
+.table { width: 100%; border-collapse: collapse; min-width: 600px; }
+.table thead { background: #f7faf7; color: var(--accent); font-weight: 700; }
+.table th, .table td {
+  padding: 0.6rem 0.9rem; border-bottom: 1px solid var(--border);
+  font-size: 0.85rem; font-weight: 600; text-align: left; color: #222;
 }
 
-.table thead {
-  background-color: #cdebd6;
-  color: #2f4f3b;
+/* style lignes en attente */
+.pendingRow { background: var(--pending-bg); color: var(--muted); }
+
+/* actions cellule */
+.actionsCell { text-align: right; }
+
+/* boutons */
+.actionBtn,
+.proceedBtn {
+  background: var(--accent); color: #fff; border: none; padding: 0.32rem 0.7rem;
+  border-radius: 6px; cursor: pointer; font-weight: 700; font-size: 0.85rem;
+}
+.proceedBtn { background: #f0a04a; color: #fff; }
+.actionBtn:hover { background: var(--accent-dark); }
+.proceedBtn:hover { background: #d7862b; }
+
+/* empty row */
+.empty { text-align: center; padding: 1rem; color: var(--muted); }
+
+/* modal overlay/content */
+.modalOverlay {
+  position: fixed;
+  top: var(--nav-height);
+  left: var(--sidebar-width);
+  width: calc(100% - var(--sidebar-width));
+  height: calc(100vh - var(--nav-height));
+  background: rgba(0,0,0,0.35);
+  display: flex; justify-content: center; align-items: center;
+  z-index: 1200;
+}
+.modalContent {
+  width: 92%;
+  max-width: 900px;
+  max-height: 90%;
+  overflow-y: auto;
+  background: var(--card-bg);
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
 }
 
-.table th,
-.table td {
-  padding: 0.8rem 1rem;
-  text-align: left;
-  border-bottom: 1px solid #bce3c5;
-}
-
-.table tbody tr:hover {
-  background-color: #dff5e5;
-}
-
-.detail {
-  background: #5cbf74;
-  border: none;
-  color: #fff;
-  padding: 0.4rem 0.9rem;
-  border-radius: 0.4rem;
-  cursor: pointer;
-  transition: background 0.3s;
-  font-weight: 600;
-}
-
-.detail:hover {
-  background: #2f6044;
-}
-
-@media (max-width: 600px) {
-  .container {
-    padding: 1rem;
-  }
-
-  .title {
-    font-size: 1.4rem;
-    margin-bottom: 2rem;
-  }
-
-  .table th,
-  .table td {
-    padding: 0.6rem 0.5rem;
-    font-size: 0.9rem;
-  }
-
-  .detail {
-    font-size: 0.9rem;
-    padding: 0.3rem 0.7rem;
-  }
+/* Responsive sous 800px */
+@media (max-width: 800px) {
+  .main { padding: 0.75rem; }
+  .toggleGroup { width: 100%; justify-content: space-between; }
+  .toggleBtn { flex: 1; min-width: 0; padding: 0.5rem; }
+  .table { min-width: 100%; }
+  .table th, .table td { padding: 0.5rem; font-size: 0.85rem; }
+  .modalContent { width: 98%; padding: 0.75rem; }
 }
