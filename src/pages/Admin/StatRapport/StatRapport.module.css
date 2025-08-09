@@ -38,7 +38,6 @@
   background: var(--green-light);
   border: 1px solid var(--border);
   border-bottom: none;
-  /* seul coin sup droit fortement arrondi */
   border-top-right-radius: 24px;
   font-family: var(--font);
   font-weight: 600;
@@ -46,12 +45,11 @@
   transition: background 0.2s;
 }
 .tab + .tab {
-  margin-left: -1px; /* écrase la bordure partagée */
+  margin-left: -1px;
 }
 .tab:hover {
   background: #d4f1d4;
 }
-/* onglet actif + zone de contenu partagent le même fond */
 .active {
   background: var(--bg-white);
   border-bottom: 1px solid var(--bg-white);
@@ -59,15 +57,24 @@
 
 /* === Contenu des onglets === */
 .content {
-  /* plus d’espacement entre sections */
   padding: 0;
+}
+
+/* === Conteneur qui sera capturé en PDF === */
+.pdfContent {
+  /* largeur max utile — laisser responsive mais contrainte lors de capture */
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  background: var(--bg-white);
+  color: #222;
 }
 
 /* === Sections unifiées === */
 .kpiSection,
 .statsSection,
 .exportSection {
-  margin: 0;               /* plus d’espace vertical */
+  margin: 0;
   padding: 1.5rem;
   border-top: 1px solid #ddd;
 }
@@ -81,6 +88,7 @@
 .kpiCards {
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 .kpiCard {
   flex: 1;
@@ -89,6 +97,7 @@
   border: 1px solid var(--border);
   border-radius: 6px;
   text-align: center;
+  min-width: 140px;
 }
 .kpiLabel { font-weight: 600; color: var(--green-dark); }
 .kpiValue { font-size: 1.5rem; font-weight: bold; color: var(--border); }
@@ -130,4 +139,193 @@
 }
 .exportBtn:hover {
   background: #004a00;
+}
+
+/* Conteneur de tableau */
+.tableContainer {
+  overflow-x: auto;
+  margin-top: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: white;
+}
+
+/* Styles des tableaux de données */
+.dataTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.dataTable th,
+.dataTable td {
+  padding: 0.8rem;
+  text-align: center;
+  border: 1px solid #eee;
+}
+
+.dataTable th {
+  background-color: #3c7d53;
+  color: white;
+  font-weight: 600;
+}
+
+/* Cellules numériques alignées à droite */
+.numberCell {
+  text-align: center;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+/* Ligne de totaux */
+.totalRow {
+  background-color: #e9f7eb !important;
+  font-weight: 600;
+}
+
+/* Cellule de période */
+.periodCell {
+  text-align: center;
+  font-style: italic;
+  color: #555;
+  padding: 0.8rem;
+  background-color: #f9f9f9;
+}
+
+/* Légende */
+.legendCell {
+  font-size: 0.8rem;
+  color: #666;
+  text-align: center;
+  padding: 0.8rem;
+  background-color: #f9f9f9;
+}
+
+/* Section d'export */
+.exportSection {
+  text-align: center;
+}
+
+.exportPlaceholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.printNote {
+  margin-top: 20px;
+  padding: 12px;
+  background-color: #f9f9f9;
+  border-left: 3px solid var(--green-dark);
+  border-radius: 3px;
+  text-align: left;
+  font-size: 0.9rem;
+  width: 100%;
+}
+
+.printNote p {
+  margin: 0 0 8px 0;
+  color: #555;
+  font-weight: 500;
+}
+
+.printNote ul {
+  padding-left: 18px;
+  margin: 8px 0;
+}
+
+.printNote li {
+  margin-bottom: 4px;
+  font-size: 0.85rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dataTable {
+    font-size: 0.8rem;
+  }
+  
+  .dataTable th,
+  .dataTable td {
+    padding: 0.5rem;
+  }
+}
+
+/* Styles spécifiques pour l'impression PDF (si imprimer depuis navigateur) */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  
+  .layout,
+  .layout * {
+    visibility: visible;
+  }
+  
+  .layout {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .folderTabs,
+  .exportSection {
+    display: none !important;
+  }
+  
+  .container {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    margin-left: 0 !important;
+  }
+  
+  .content {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    box-shadow: none;
+  }
+  
+  .statsSection {
+    page-break-inside: avoid;
+    margin-bottom: 10px;
+  }
+  
+  .kpiSection,
+  .tableContainer {
+    margin-bottom: 8px;
+  }
+  
+  h2 {
+    font-size: 15px;
+    margin: 6px 0;
+  }
+  
+  h3 {
+    font-size: 13px;
+    margin: 4px 0;
+  }
+  
+  .dataTable {
+    font-size: 10px;
+  }
+  
+  .numberCell {
+    padding: 2px 4px;
+  }
+  
+  .kpiCard {
+    padding: 8px;
+  }
+  
+  .kpiValue {
+    font-size: 20px;
+  }
 }
